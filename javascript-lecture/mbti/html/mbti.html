@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <link rel="stylesheet" href="../json/mbti.json"> -->
+    <title>[js]mbti</title>
+  </head>
+  <body>
+    <!-- 질문 -->
+    <div class="question-box">
+      <div class="title">문제의 타이틀 뿌리는 곳</div>
+      <div class="btns">
+        <button class="btn01">첫번째 선택</button>
+        <button class="btn02">두번째 선택</button>
+      </div>
+    </div>
+
+    <!-- 결과 -->
+    <div class="result-box"></div>
+
+    <script>
+      /*
+                  I(내향)E(외향)
+                  N(상상)S(현실)
+                  F(감정)T(이성)
+                  J(계획)P(즉흥)
+                  */
+      const btn01 = document.querySelector(".btn01");
+      const btn02 = document.querySelector(".btn02");
+      const title = document.querySelector(".title");
+      const resultBox = document.querySelector(".result-box");
+      let count = 0;
+      let question = [];
+      let score = [
+        { id: "EI", num: 0 },
+        { id: "SN", num: 0 },
+        { id: "TF", num: 0 },
+        { id: "JP", num: 0 },
+      ];
+
+      fetch("../json/mbti.json") //.json은 주석이 불가능함
+        .then(function (response) {
+          console.log(response);
+          return response.json();
+        })
+        .then(function (result) {
+          console.log(result.question);
+          question = [...result.question];
+
+          title.textContent = question[0].title;
+          btn01.textContent = question[0].answera;
+          btn02.textContent = question[0].answerb;
+          btn01.addEventListener("click", function () {
+            clickProcess(1);
+          });
+          btn02.addEventListener("click", function () {
+            clickProcess(0);
+          });
+        });
+
+      function clickProcess(point) {
+        if (count < question.length - 1) {
+          title.textContent = question[count + 1].title;
+          btn01.textContent = question[count + 1].answera;
+          btn02.textContent = question[count + 1].answerb;
+          const newScore = score.map(function (item, index) {
+            if (item.id === question[count].type) {
+              return { id: item.id, num: item.num + point };
+            } else {
+              return item;
+            }
+          });
+          score = newScore;
+          console.log(score);
+        } else {
+          console.log("끝");
+          const myMbti = score.reduce(function (acc, current) {
+            if (current.num >= 2) {
+              return acc + current.id.charAt(0);
+            } else {
+              return acc + current.id.charAt(1);
+            }
+          }, "");
+          console.log(myMbti);
+          if (myMbti === "ESTJ") {
+            resultBox.innerHTML = `<img src="https://mblogthumb-phinf.pstatic.net/MjAyMTAxMTVfODYg/MDAxNjEwNzA3OTI5OTI4.ox4Vx8aW7HgllLtYNyrC2Uo9w3g76FMh7yhcGXEXftgg.nlp930B9S1ZurCoJulgcgOHgmBvgenCQtxAXCzPZFOUg.JPEG.41minit/1610707726106.jpg?type=w800">`;
+          }
+        }
+        count++;
+      }
+    </script>
+  </body>
+</html>

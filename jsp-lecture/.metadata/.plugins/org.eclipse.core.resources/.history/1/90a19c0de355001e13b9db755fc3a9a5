@@ -1,0 +1,15 @@
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="common.JDBCConnect"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%
+	JDBCConnect jdbcConn = new JDBCConnect();
+	String userID = request.getParameter("userID");
+	
+	String sql = "select count(*) as count from member where id = ?";
+	PreparedStatement pstmt = jdbcConn.conn.prepareStatement(sql);
+	pstmt.setString(1,userID);
+	
+	ResultSet rs = pstmt.executeQuery();
+%>

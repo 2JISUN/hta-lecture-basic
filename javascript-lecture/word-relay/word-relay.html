@@ -1,0 +1,90 @@
+<!-- 끝말잇기 -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>[js]끝말잇기</title>
+    <script src="hangul-tools.js"></script>
+  </head>
+  <body>
+    <!-- <ul>
+      <li>기러기</li>
+    </ul> -->
+    <div class="last-word">선생님</div>
+    <input type="text" class="word" placeholder="국어사전에 등재된 단어를 입력하세요." />
+    <script>
+      //console.log(HanTools.dueum("녀"));
+
+      //   const animals = ["cat", "dog", "lion", "tiger"];
+      //   const test = "cat";
+      //   animals.forEach(function (item) {
+      //     if (item === test) console.log(true);
+      //     if (item !== test) console.log(false);
+      //   });
+      //   console.log(animals.includes(test));
+      // 반복문 돌려서 있는지 없는지 따져보기...
+      // 카톡으로 코드 보내주세요...
+      //   const txt = "기러기";
+      //   console.log(txt.length);
+      //   console.log(txt.charAt(2));
+      //   console.log(txt.charCodeAt(0));
+      //   console.log(txt.concat("가 우대 받는 사회"));
+      //   console.log(txt.substring(0, 3) + "...");
+      const word = document.querySelector(".word");
+      const lastWord = document.querySelector(".last-word");
+      const wordList = ["선생님"];
+
+      //   async function isDict(search) {
+      //     const response = await fetch(`https://opendict.korean.go.kr/api/search?key=9A816277AA70D1F8EC1ADC87D52CA5E2&q=${search}&req_type=json`);
+      //     const result = await response.json();
+      //     return result;
+      //   }
+      //   const isResult = isDict("소나기");
+      //   console.log(isResult);
+      word.addEventListener("keyup", function (e) {
+        if (e.keyCode === 13) {
+          //console.log(word.value);
+          console.log(HanTools.dueum(lastWord.textContent.charAt(2)));
+          const inputWord = word.value;
+          // 3글자만 입력
+          if (inputWord.length !== 3) {
+            word.value = "";
+            return;
+          }
+          if (wordList.includes(word.value)) {
+            word.value = "";
+            return;
+          }
+          if (HanTools.dueum(lastWord.textContent.charAt(2)) === inputWord.charAt(0)) {
+            fetch(`https://opendict.korean.go.kr/api/search?key=1D47DC4891D1AB5B2BDEBE5A1106CA0B&q=${inputWord}&req_type=json`)
+              .then(function (response) {
+                return response.json();
+              })
+              .then(function (result) {
+                const itemList = [...result.channel.item];
+                const dictionary = itemList.map(function (item) {
+                  return item.word.replace(/\^|\-/g, "");
+                });
+                console.log(dictionary);
+                if (dictionary.includes(inputWord)) {
+                  //이렇게까지 하면 진짜 국어 사전에 등재된 단어
+                  console.log(inputWord);
+                  wordList.push(inputWord);
+                  lastWord.textContent = inputWord;
+                  word.value = "";
+                } else {
+                  console.log("없다");
+                  word.value = "";
+                }
+
+                //console.log(dictionary);
+              });
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

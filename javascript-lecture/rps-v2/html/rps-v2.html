@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/rps-v2.css" />
+    <title>document</title>
+  </head>
+  <body>
+    <ul class="computer">
+      <li><img src="../images/rock.svg" alt="바위" /></li>
+      <li><img src="../images/paper.svg" alt="보" /></li>
+      <li><img src="../images/scissors.svg" alt="가위" /></li>
+    </ul>
+    <ul class="human">
+      <li><img src="../images/rock.svg" alt="바위" /></li>
+      <li><img src="../images/paper.svg" alt="보" /></li>
+      <li><img src="../images/scissors.svg" alt="가위" /></li>
+    </ul>
+    <div class="result">
+      <!-- <ul>
+        <li></li>
+      </ul> -->
+    </div>
+
+    <script>
+      // const computerList = document.querySelectorAll(".computer li");
+      // const result = document.querySelector(".result");
+
+      // document.creatElement("ul");
+      // result.appendChild(document.creatElement("ul"));
+      // const ul = result.querySelector("ul");
+      // const li = document.creatElement("li");
+      // li.classList.add("Win");
+      // li.textContent("W");
+      // ul.appendChild(li);
+      // computerList.forEach(function (item) {
+      //   item.style.display = "none";
+      // });
+
+      // ul.appendChild(document.creatElement("li"));
+
+      // // 배열 전체 출력 (1. 반복문)
+      // computerList.forEach(function (item) {
+      //   item.style.display = "none";
+      // });
+
+      // // 전역변수로 할당
+      // let random;
+
+      // function computerRandomChoice() {
+      //   computerList.forEach(function (item) {
+      //     item.style.display = "none";
+      //   });
+      //   random = Math.floor(Math.random() * 3);
+      //   //console.log("random====" + random);
+      //   computerList[random].style.display = "block";
+      // }
+
+      // // 결과값 출력 함수로 묶어서 쓰기
+      // function appendItem(txt, className) {
+      //   const li = document.createElement("li");
+      //   li.classList.add(className);
+      //   li.textContent = txt;
+      //   ul.appendChild(li);
+      // }
+      // // appendItem("D","draw");
+      // // appendItem("W","win");
+      // // appendItem("L","lose");
+
+      // // 전역변수로 할당
+      // let idx = setInterval(computerRandomChoice, 20);
+
+      // const humanList = document.querySelectorAll(".human li");
+      // humanList.forEach(function (item, index) {
+      //   item.addEventListener("click", function () {
+      //     const humanChoice = index;
+      //     const selectedNum = random;
+
+      //     // stop
+      //     clearInterval(idx);
+
+      //     //
+      //     item.parentNode.classList.add("prevent");
+
+      //     // restart
+      //     setTimeout(function () {
+      //       idx = setInterval(computerRandomChoice, 20);
+      //     }, 1000);
+
+      //     if (humanChoice === selectedNum) {
+      //       appendItem("D", "draw");
+      //     } else if (humanChoice === 0 && selectedNum === 1) {
+      //       appendItem("L", "lose");
+      //     } else if (humanChoice === 1 && selectedNum === 2) {
+      //       appendItem("L", "lose");
+      //     } else if (humanChoice === 2 && selectedNum === 0) {
+      //       appendItem("L", "lose");
+      //     } else {
+      //       appendItem("W", "win");
+      //     }
+      //   });
+      // });
+
+      const computerList = document.querySelectorAll(".computer li");
+      const result = document.querySelector(".result");
+      document.createElement("ul");
+      result.appendChild(document.createElement("ul"));
+      const ul = result.querySelector("ul");
+
+      computerList.forEach(function (item) {
+        item.style.display = "none";
+      });
+      // computerList[0].style.display = "none";
+      // computerList[1].style.display = "none";
+      // computerList[2].style.display = "none";
+      //randomChoice();
+
+      function makeRandom(min, max) {
+        //0 + min < Math.floor(Math.random() * (max - min + 1)) + min < 1 * max + min;
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      }
+
+      let random;
+      function computerRandomChoice() {
+        computerList.forEach(function (item) {
+          item.style.display = "none";
+        });
+        random = Math.floor(Math.random() * 3);
+        computerList[random].style.display = "block";
+      }
+
+      // 태그를 찾는게 아니고 만들어서 쓰기
+      function appendItem(txt, className) {
+        // const li = document.createElement("li");
+        // li.classList.add(className);
+        // li.textContent = txt;
+        // ul.appendChild(li);
+        ul.innerHTML += `<li class="${className}">${txt}</li>`;
+      }
+      // appendItem("D","draw");
+      // appendItem("W","win");
+      // appendItem("L","lose");
+
+      let idx = setInterval(computerRandomChoice, 300);
+      let count = 0;
+
+      const humanList = document.querySelectorAll(".human li");
+      humanList.forEach(function (item, index) {
+        item.addEventListener("click", function () {
+          const humanChoice = index;
+          const selectedNum = random;
+          clearInterval(idx);
+          //console.log(item.parentNode);
+          item.parentNode.classList.add("prevent");
+          count++;
+          console.log(count);
+
+          const idx02 = setTimeout(function () {
+            idx = setInterval(computerRandomChoice, 20);
+            item.parentNode.classList.remove("prevent");
+          }, 1000);
+          // 삼세판 후 멈추기
+          if (count >= 3) {
+            clearTimeout(idx02);
+          }
+          if (humanChoice === selectedNum) {
+            //result.textContent += " draw";
+            appendItem("D", "draw");
+          } else if (humanChoice === 0 && selectedNum === 1) {
+            //result.textContent += " lose";
+            appendItem("L", "lose");
+          } else if (humanChoice === 1 && selectedNum === 2) {
+            //result.textContent += " lose";
+            appendItem("L", "lose");
+          } else if (humanChoice === 2 && selectedNum === 0) {
+            //result.textContent += " lose";
+            appendItem("L", "lose");
+          } else {
+            //result.textContent += " win";
+            appendItem("W", "win");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

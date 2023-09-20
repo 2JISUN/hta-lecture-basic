@@ -1,0 +1,63 @@
+<!-- 카카오 검색 api 가져오기 -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>카카오 이미지 검색t</title>
+    <!-- 라이브러리 > 이미지 크게 보기 -->
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
+  </head>
+  <body>
+    <!-- 검색 -->
+    <input type="text" placeholder="검색할 이미지를 입력하세요" class="image-search" />
+    <button class="btn-search">search</button>
+
+    <!-- 데이터 보여주는 방식 -->
+    <ul class="thumb-list"></ul>
+
+    <script>
+      const thumbList = document.querySelector(".thumb-list");
+      const imageSearch = document.querySelector(".image-search");
+      const btnSearch = document.querySelector(".btn-search");
+
+      // 클릭했을 때 데이터 보여줌
+      btnSearch.addEventListener("click", function () {
+        kakaoSearch(imageSearch.value); // 호이스팅 > 자바스크립트는 선언한 함수 위에서만 실행가능함
+      });
+
+      // 엔터쳤을 때 데이터 보여줌
+      imageSearch.addEventListener("keyup", function (e) {
+        // kakaoSearch(imageSearch.value);
+        // console.log(e);
+        if (e.keyCode === 13) {
+          kakaoSearch(imageSearch.value); //호이스팅 > 자바스크립트는 선언한 함수 위에서만 실행가능함
+        }
+      });
+
+      function kakaoSearch(search) {
+        thumbList.innerHTML = "";
+        fetch(`https://dapi.kakao.com/v2/search/vclip?query=${search}`, {
+          headers: {
+            Authorization: "KakaoAK 2b55128d33862822faaa6c74b6082f31",
+          },
+        })
+          .then(function (response) {
+            return response.json(); //promise 로 리턴됨 -> then으로 결과를 받아볼 수 있음
+          })
+          .then(function (result) {
+            console.log(result);
+            const imgList = [...result.documents];
+            imgList.forEach(function (item, index) {
+              thumbList.innerHTML += `<li><a href="${item.url}" data-fancybox="gallery" data-caption="${item.title}"><img src="${item.thumbnail}" alt=""></a></li>`;
+            });
+          });
+      }
+      Fancybox.bind("[data-fancybox]", {
+        // Your custom options
+      });
+    </script>
+  </body>
+</html>

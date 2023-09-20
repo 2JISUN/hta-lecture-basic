@@ -1,0 +1,32 @@
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="common.JDBCConnect"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%
+	response.setContentType("application/json; charset=utf-8");
+
+
+	//1. driver 찾기
+	//2. db연동
+	JDBCConnect jdbcConn = new JDBCConnect();
+	
+	//3. 조회 : 쿼리 작성
+	String userID = request.getParameter("userID");
+	String sql = "select count(*) as count from member where id = ?";
+	
+	//4. db 불러오기
+	PreparedStatement pstmt = jdbcConn.conn.prepareStatement(sql);
+	pstmt.setString(1,userID);
+	ResultSet rs = null;
+	rs = pstmt.executeQuery();
+	
+	
+	//5.조건
+	int result = 0;
+	if(rs.next()){
+		result = rs.getInt("count");
+		out.println(result);
+		
+	}
+%>

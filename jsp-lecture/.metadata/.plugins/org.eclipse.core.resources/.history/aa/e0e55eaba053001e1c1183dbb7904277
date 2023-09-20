@@ -1,0 +1,36 @@
+package common;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+
+public class JDBCConnect {
+    
+    public JDBCConnect() {
+    	try {
+    		//1. driver 찾기
+    		String driver = "oracle.jdbc.OracleDriver";
+			Class.forName(driver);
+			
+			//2-1. db 접근
+			// 자바17 = 오라클11
+			String url = "jdbc:oracle:thin:@localhost:1521:xe";
+			String id = "jisun";
+			String pw = "1234";
+			
+		    //2-2. db 연동
+		    Connection conn = DriverManager.getConnection(url, id, pw);
+			System.out.println("db연결 성공");
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+    
+    
+
+	
+	
+
+
+}

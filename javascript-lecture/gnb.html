@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <ul class="gnb">
+      <li>회사소개</li>
+      <li>제품소개</li>
+      <li>경영이념</li>
+      <li>인재채용</li>
+    </ul>
+
+    <script>
+      const gnb = document.querySelectorAll(".gnb li"); // 한꺼번에 제어 .querySelectorAll > 배열로 묶어줌 > 유사배열
+      for (let i = 0; i < gnb.length; i++) {
+        // .length > 개수 알아서 맞춰줌
+        console.log(gnb[i]);
+        gnb[i].addEventListener("click", function () {
+          console.log(i);
+        });
+      }
+    </script>
+  </body>
+</html>

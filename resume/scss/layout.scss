@@ -1,0 +1,105 @@
+// 코드 중복 최소화를 위해 .scss를 사용한다
+
+// scss에서는 변수 앞에 "$"을 붙임
+// 변수 설정
+$main-color: #00d6d6;
+
+body {
+  background-color: #e7ffe6;
+}
+
+.resume {
+  width: 1200px;
+  display: flex;
+  gap: 20px;
+  background-color: #ffffff;
+  padding: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  .img-box {
+    img {
+      width: 250px;
+    }
+  }
+  .contents-box {
+    h1 {
+      font-size: clamp(24px, 5vw, 64px);
+      margin-bottom: 20px;
+    }
+    .info {
+      dl {
+        display: flex;
+        margin-bottom: 10px;
+        gap: 20px;
+        dt {
+          font-weight: bold;
+        }
+        dd {
+          color: #999;
+        }
+      }
+    }
+    .contents {
+      margin-top: 50px;
+      h2 {
+        font-size: 25px;
+        color: $main-color;
+        margin-bottom: 20px;
+        text-transform: capitalize;
+      }
+      p {
+        line-height: 1.5;
+        word-break: keep-all;
+        margin-bottom: 20px;
+      }
+      .skill-list {
+        display: flex;
+        gap: 20px;
+
+        h3 {
+          font-size: 20px;
+          color: $main-color;
+          margin-bottom: 15px;
+        }
+        ul {
+          li {
+            margin-left: 10px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            &li:before {
+              content: "";
+              display: block;
+              margin-right: 5px;
+              width: 4px;
+              height: 4px;
+              border-radius: 10px;
+              background-color: darken($color: $main-color, $amount: 10);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+// 미디어 쿼리 (모바일 view)
+// 만약 내가 보는 미디어의 사이즈가 640px보다 작으면 위에 있는 css를 적용하지말고 아래의 코드를 적용해라
+@media all and (max-width: 640px) {
+  .resume {
+    width: 100%;
+    padding: 0;
+    flex-direction: column;
+    .img-box {
+      padding: 20px;
+      img {
+        width: 100%;
+        aspect-ratio: 1.2/1;
+        border-radius: 500px;
+      }
+    }
+
+    .contents-box {
+      padding: 20px;
+    }
+  }
+}

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>[js]코로나</title>
+    <!--  -->
+    <link rel="stylesheet" href="../css/loading.css" />
+    <!-- js 달력 -->
+    <script src="https://cdn.jsdelivr.net/npm/@easepick/bundle@1.2.1/dist/index.umd.min.js"></script>
+    <!-- js 차트 -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <!-- 로딩바 -->
+    <div class="lds-heart"><div></div></div>
+
+    <!-- 달력 -->
+    <input type="text" class="datepicker" id="datepicker" />
+
+    <!-- 차트 -->
+    <canvas id="myChart"></canvas>
+
+    <!-- 코로나 데이터 -->
+    <ul class="coronaList"></ul>
+
+    <script>
+      // 달력
+      const pickedDate = document.querySelector(".datepicker");
+      const picker = new easepick.create({
+        element: pickedDate,
+        css: ["https://cdn.jsdelivr.net/npm/@easepick/bundle@1.2.1/dist/index.css"],
+        lang: "ko-KR",
+        format: "YYYY-MM-DD",
+        setup(picker) {
+          picker.on("select", function (e) {
+            coronaList.innerHTML = "";
+
+            console.log(pickedDate.value);
+            loadCorona(pickedDate.value);
+          });
+        },
+      });
+
+      // 로딩바
+      const loadingBar = document.querySelector(".lds-heart");
+      loadingBar.style.display = "none";
+
+      // 코로나 데이터
+      const coronaList = document.querySelector(".coronaList");
+
+      // 전역 변수로 선언
+      let chart = null;
+
+      // 특정 날짜(직접 입력)의 지역별 코로나 확진자 수 보기
+      function loadCorona(pickedDate) {
+        loadingBar.style.display = "block";
+
+        const result = fetch(
+          // fetch : 비동기 함수
+          `https://apis.data.go.kr/1352000/ODMS_COVID_04/callCovid04Api?serviceKey=jwMW2GOSieJWT6qS71g3NHVl%2FLmojUpBM0HoTAbGSSCTjxXNuMbKlS3ENQHnCtfGpLzu5L6TUrDhuzLKbpMzsA%3D%3D&pageNo=1&numOfRows=500&apiType=JSON&std_day=${pickedDate}`
+        )
+          .then(function (response) {
+            return response.json(); //promise 로 리턴됨 -> then으로 결과를 받아볼 수 있음
+          })
+          //데이터 보여주는 방식
+          .then(function (result) {
+            const myResult = [...result.items];
+            // 데이터 보여주는 방식 (지역별 ㄱㄴㄷ순 정렬)
+            myResult.sort(function (a, b) {
+              if (a.gubun > b.gubun) {
+                return 1;
+              } else if (a.gubun < b.gubun) {
+                return -1;
+              } else {
+                return 0;
+              }
+            });
+
+            // 차트로 결과 표현
+            const ctx = document.querySelector("#myChart");
+
+            const cities = [];
+            const datas = [];
+            myResult.forEach(function (item) {
+              cities.push(item.gubun);
+              datas.push(item.incDec);
+            });
+            if (chart !== null) {
+              chart.destroy();
+            }
+            chart = new Chart(ctx, {
+              type: "bar",
+              data: {
+                labels: cities,
+                datasets: [
+                  {
+                    label: "지역별 코로나 확진자 수",
+                    data: datas,
+                    borderWidth: 1,
+                  },
+                ],
+              },
+              options: {
+                scales: {
+                  y: {
+                    beginAtZero: true,
+                  },
+                },
+              },
+            });
+
+            // li로 결과 표현
+            // myResult.forEach(function (item) {
+            //   console.log(item.gubun + ":" + item.incDec);
+            //   coronaList.innerHTML += `<li><p>${item.gubun}</p><p>${item.incDec}</p></li>`; //지역명 : item.gubun // 증가 : item.incDec
+            // });
+          })
+
+          //에러 났을 때
+          .catch(function (error) {
+            console.log(error);
+            alert("서버 오류입니다.");
+            loadingBar.style.display = "none";
+          })
+
+          // 에러와 상관없이 무조건 실행
+          .finally(function () {
+            console.log("나는 무조건 실행");
+            loadingBar.style.display = "none";
+          });
+      }
+    </script>
+  </body>
+</html>

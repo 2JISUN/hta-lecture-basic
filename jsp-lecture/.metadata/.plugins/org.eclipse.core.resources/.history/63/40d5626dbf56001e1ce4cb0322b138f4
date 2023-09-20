@@ -1,0 +1,52 @@
+<!-- process 로그인 -->
+
+<%@page import="util.ScriptWriter"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="common.JDBCConnect"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%
+
+//0.전역변수 할당
+//get : request.getParameter를 사용하여 사용자가 입력한 정보를 받아옵니다.
+	String userID = request.getParameter("userID");
+	String userPW = request.getParameter("userPW");
+	
+	
+	//1. driver 찾기
+	//2. db연동 및 해제
+	JDBCConnect jdbcConn = new JDBCConnect();  //Oracle 데이터베이스에 연결을 수행
+	
+	
+	//3. db접근 > 쿼리 작성 > select > 데이터 가져오기 > executeQuery()
+	//3-1. 쿼리 작성
+	String sql = "select * from member where id = ? and password = ?";
+	//3-2. 쿼리 세팅(저장)
+	PreparedStatement pstmt = null; //Prepared : SQL 문장을 실행하기
+	pstmt = jdbcConn.conn.prepareStatement(sql); //prepare : PreparedStatement 객체를 생성하는 메서드
+	//set : pstmt.setString를 사용하여 사용자가 입력한 정보를 db에 저장합니다.
+	pstmt.setString(1, userID);
+	pstmt.setString(2, userPW);
+	
+	
+	ResultSet rs = pstmt.executeQuery();
+	if(rs.next()) {
+		//pageContext> request > session > application		
+		session.setAttribute("loggedID", rs.getString("id"));
+		session.setAttribute("loggedName", rs.getString("name"));
+		response.sendRedirect("../index/index.jsp");
+	} else {
+		ScriptWriter.alertAndBack(response, "아이디 패스워드 확인해 주세요.");
+	}
+	jdbcConn.close();
+%>
+
+
+
+
+
+
+
+
+

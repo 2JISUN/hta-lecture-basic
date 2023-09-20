@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .parent {
+        /* 서식 */
+        font-size: px;
+
+        /* 공간 > 높이,넓이 */
+        height: 800px;
+        width: 1000px;
+
+        /* 공간 > 테두리 */
+        border: 1px solid #000;
+
+        /* 자식 요소 가로 정렬 */
+        display: flex;
+        flex-direction: row;
+
+        /* 자식 요소 가로 정렬 > 가로 */
+        justify-content: center;
+
+        /* 자식 요소 가로 정렬 > 세로 */
+        align-items: center;
+
+        /* 자식 요소가 부모보다 많을 때(공간을 넘을 때) 부모가 감싸기 위해 사용*/
+        flex-wrap: wrap;
+      }
+
+      .son {
+        box-sizing: border-box;
+        /* width: 100px; */
+        height: 100px;
+        border: 1px solid #f00;
+
+        /* 부모의 공간만큼 자식들이 똑같이 여백없이 공간을 나눠가짐 */
+        /* flex-grow: 15; */
+      }
+
+      /* 같은 class를 가지는 자식 요소를 선택하기
+
+      .son:nth-child(1) {
+        width: 300px;
+      }
+
+      .son:nth-child(2) {
+        자식마다 여백을 다르게 주고 싶을 때 사용
+        flex-grow: 1;
+	} 
+      */
+
+      /* 같은 class를 가지는 자식 요소를 선택하기 */
+      .son:nth-child(1) {
+        order: 3;
+      }
+
+      .son:nth-child(2) {
+        order: 1;
+      }
+
+      .son:nth-child(3) {
+        order: 2;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="parent">
+      <div class="son">01</div>
+      <div class="son">02</div>
+      <div class="son">03</div>
+      <div class="son">04</div>
+      <div class="son">05</div>
+    </div>
+  </body>
+</html>

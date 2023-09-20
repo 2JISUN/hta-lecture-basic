@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 키입력 -->
+    <input
+      class="height"
+      type="text"
+      oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+      placeholder="키를 입력하세요. (ex)180"
+    />
+    <!-- 몸무게 입력 -->
+    <input
+      class="weight"
+      type="text"
+      oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+      placeholder="몸무게를 입력하세요. (ex)90"
+    />
+    <!-- 데이터 제출 버튼 -->
+    <button class="btn">결과</button>
+    <!-- 결과 확인 -->
+    <div class="result"></div>
+
+    <script>
+      const height = document.querySelector(".height");
+      const weight = document.querySelector(".weight");
+      const btn = document.querySelector(".btn");
+      const result = document.querySelector(".result");
+
+      btn.addEventListener("click", function () {
+        // console.log(height.value); //입력값을 가져오는지 확인
+        if (height.value === "") {
+          alert("키를 입력하세요"); // 경고창
+          height.focus(); //커서 깜빡
+          return; // 함수 끝내기
+        }
+        if (weight.value === "") {
+          alert("몸무게를 입력하세요"); // 경고창
+          weight.focus(); //커서 깜빡
+          return; // 함수 끝내기
+        }
+
+        const heightValue = parseInt(height.value) / 100;
+        const weightValue = parseInt(weight.value);
+        const bmi = weightValue / heightValue ** 2;
+        if (bmi >= 25) {
+          result.textContent = "비만";
+        } else if (bmi < 18) {
+          result.textContent = "저체중";
+        } else {
+          result.textContent = "정상";
+        }
+        console.log(bmi);
+      });
+
+      let num = 10;
+      if (num > 5) {
+        console.log("5보다 큽니다.");
+      } else {
+        console.log("5보다 작습니다.");
+      }
+
+      // 삼항연산자
+      const txt = num > 5 ? "big" : num > 3 ? "medium" : "small";
+      console.log("🚀 ~ file: bmi.html:70 ~ txt:", txt);
+
+      // switch 문 > 결과값이 명확할 때 씀
+      const fruit = "aple";
+      switch (fruit) {
+        case "apple":
+        case "aple":
+        case "aplle":
+          console.log("사과");
+          break;
+        case "banana":
+          console.log("바나나");
+          break;
+        case "cherry":
+          console.log("체리");
+          break;
+        default:
+          console.log("🚫과일 불일치🚫");
+          break;
+      }
+
+      const num02 = 10;
+      switch (num02) {
+        case 10: // case 뒤에 조건을 쓰지 않는다.
+          console.log("num02는 5보다 큽니다");
+          break;
+      }
+
+      // 자판기 만들기
+      const beverage = prompt("음료수 가격 알려드립니다", ""); // 잘 안씀
+      switch (beverage) {
+        case "콜라":
+        case "coke":
+        case "zhffk":
+          console.log("5️⃣0️⃣0️⃣원");
+          break;
+        case "포카리스웨트":
+        case "포카리":
+        case "vhzkfltmdnpxm":
+        case "vhzkfl":
+          console.log("9️⃣0️⃣0️⃣원");
+          break;
+        default:
+          console.log("➡️입력하세요⬅️");
+          break;
+      }
+
+      // 태양계(switch를 이용) 숫자를 입력받아서 출력하기
+      const solarSystem = prompt("태양계 행성의 순서를 알고싶으시다면 입력하세요 ", ""); // 잘 안씀
+      switch (
+        solarSystem // parseInt(solarSystem) > 0~8
+      ) {
+        case "0":
+          console.log("☀️태양☀️");
+          break;
+        case "1":
+          console.log("수성");
+          break;
+        case "2":
+          console.log("금성");
+          break;
+        case "3":
+          console.log("지구");
+          break;
+        case "4":
+          console.log("화성");
+          break;
+        case "5":
+          console.log("목성");
+          break;
+        case "6":
+          console.log("토성");
+          break;
+        case "7":
+          console.log("천왕성");
+          break;
+        case "8":
+          console.log("해왕성");
+          break;
+        default:
+          console.log("태양계를 벗어났습니다.");
+          break;
+      }
+    </script>
+  </body>
+</html>

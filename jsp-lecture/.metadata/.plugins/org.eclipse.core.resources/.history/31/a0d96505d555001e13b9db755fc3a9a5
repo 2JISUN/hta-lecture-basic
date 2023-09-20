@@ -1,0 +1,47 @@
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="common.JDBCConnect"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%
+	JDBCConnect jdbcConn = new JDBCConnect();
+	
+	
+	String userID = request.getParameter("userID");
+	String userPW = request.getParameter("userPW");
+	String userName = request.getParameter("userName");
+	int zipCode = 0;
+	if(request.getParameter("zipCode")!=null){
+		zipCode = Integer.parseInt(request.getParameter("zipCode"));
+	}
+	String address = request.getParameter("address");
+	String detailAddress = request.getParameter("detailAddress");
+	
+	System.out.println(userID);
+	System.out.println(userPW);
+	System.out.println(userName);
+	System.out.println(zipCode);
+	System.out.println(address);
+	System.out.println(detailAddress);
+
+	
+	//db접속
+	PreparedStatement pstmt = null;
+	String sql = "insert into member values(seq_member.nextval, ?, ?, ?, ?, ?, ?, sysdate)";
+	pstmt = jdbcConn.conn.prepareStatement(sql);
+	
+	
+    pstmt.setString(1, userID); //set : 아이디
+    pstmt.setString(2, userPW); //set : 비밀번호
+    pstmt.setString(3, userName); //set : 이름
+    pstmt.setInt(4, zipCode); //set : 우편번호
+    pstmt.setString(5, address); //set : 주소
+    pstmt.setString(6, detailAddress); //set : 상세주소
+    
+	int result = pstmt.executeUpdate();
+    if (result > 0) { 
+        System.out.println("입력 되었음");
+    } else {
+    	System.out.println("입력 오류");
+    }
+
+%>

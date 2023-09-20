@@ -1,0 +1,18 @@
+<!-- process 회원탈퇴 -->
+
+<%@page import="common.JDBCConnect"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
+<%
+
+//1. driver 찾기
+//2. db연동
+JDBCConnect jdbcConn = new JDBCConnect();  //Oracle 데이터베이스에 연결을 수행
+
+
+jdbcConn.close();
+
+
+%>
+    

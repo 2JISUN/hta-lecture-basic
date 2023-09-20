@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>[v3]가위바위보 게임</title>
+
+    <link rel="stylesheet" href="../css/rps-v3.css" />
+    <script src="../js/rps-v3.js" defer></script>
+  </head>
+  <body>
+    <!--컴퓨터 -->
+    <div>
+      <!-- <p>알파고의 선택</p> -->
+      <ul class="computer">
+        <li><img src="../images/rock.svg" alt="바위" /></li>
+        <li><img src="../images/paper.svg" alt="보" /></li>
+        <li><img src="../images/scissors.svg" alt="가위" /></li>
+      </ul>
+      <!--유저 -->
+      <!-- <p>나의 선택</p> -->
+      <ul class="human">
+        <li><button class="btn">바위</button></li>
+        <li><button class="btn">보</button></li>
+        <li><button class="btn">가위</button></li>
+      </ul>
+      <!-- 게임 결과 -->
+      <div class="result"></div>
+    </div>
+
+    <script>
+      // 찾기(변수 할당)
+      // 찾기 > 컴퓨터(전체 > 유사배열 > All)
+      const computerList = document.querySelectorAll(".computer li");
+      // 찾기 > 유저(전체 > 유사배열 > All)
+      const humanList = document.querySelectorAll(".human li");
+      console.log("🚀 ~ file: r-p-s-v3.html:34 ~ humanList:", humanList);
+      // 찾기 > 게임 결과
+      const result = document.querySelector(".result");
+
+      // 선택
+      let random; // 전역변수 선언
+
+      // 선택 > 컴퓨터(랜덤)
+      function computerRandomchoice() {
+        // 선택 전 컴퓨터 요소를 숨긴다
+        computerList[0].style.display = "none";
+        computerList[1].style.display = "none";
+        computerList[2].style.display = "none";
+
+        // Math의 random함수를 사용하여 random 변수에 0~2까지의 값을 할당한다
+        random = Math.floor(Math.random() * 3);
+
+        // 숨겼던 요소를 보여준다?
+        computerList[random].style.display = "block";
+      }
+
+      //특정 시간동안 computerRandomchoice함수 반복(특정시간동안)
+      const idx = setInterval(computerRandomchoice, 100);
+
+      // 선택 > 유저(수동 = 클릭)
+      for (let i = 0; i < 3; i++) {
+        humanList[i].addEventListener("click", function () {
+          const humanChoice = i; //0~2 중 유저 선택
+          const selectNum = random; //0~2 중 컴퓨터 랜덤
+          console.log(selectNum);
+          // computerRandomchoice함수 멈추기
+          clearInterval(idx);
+          if (humanChoice === selectNum) {
+            console.log("비겼음");
+            result.textContent = "👍draw👍";
+          } else if (humanChoice === 0 && selectNum === 1) {
+            console.log("졌음");
+            result.textContent = "🍀lose🍀";
+          } else if (humanChoice === 1 && selectNum === 2) {
+            console.log("졌음");
+            result.textContent = "🍀lose🍀";
+          } else if (humanChoice === 2 && selectNum === 0) {
+            console.log("졌음");
+            result.textContent = "🍀lose🍀";
+          } else {
+            console.log("이겼음");
+            result.textContent = "🥇win🥇";
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

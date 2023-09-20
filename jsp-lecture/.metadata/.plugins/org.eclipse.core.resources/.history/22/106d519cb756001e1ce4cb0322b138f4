@@ -1,0 +1,60 @@
+<!-- process 아이디 중복 확인 -->
+
+<%@page import="com.google.gson.Gson"%>
+<%@page import="java.util.Map"%>
+<%@page import="java.util.HashMap"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="common.JDBCConnect"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%
+
+	//HTTP 응답의 Content-Type 헤더를 설정하는 부분
+	//역할 : 클라이언트에게 전송되는 데이터의 형식과 문자 인코딩을 명시적으로 지정
+	//목적 : 이를 통해 데이터의 정확한 해석과 처리가 가능해집니다.
+	response.setContentType("application/json; charset=utf-8");
+
+	//0.전역변수 할당
+	//get : request.getParameter를 사용하여 사용자가 입력한 정보를 받아옵니다.
+	String userID = request.getParameter("userID");
+
+	//1. driver 찾기
+	//2. db연동
+	JDBCConnect jdbcConn = new JDBCConnect();  //Oracle 데이터베이스에 연결을 수행
+	
+	//3. 조회 : 쿼리 작성 + 데이터 가져오기
+	//3-1. 쿼리 작성
+	String sql = "select count(*) as count from member where id = ?";
+	
+	//3-2. 데이터 db에 저장하기
+	//set : pstmt.setString를 사용하여 사용자가 입력한 정보를 db에 저장합니다.
+	PreparedStatement pstmt = null; //Prepared : SQL 문장을 실행하기 위한 객체입니다.
+	pstmt = jdbcConn.conn.prepareStatement(sql); //prepare : PreparedStatement 객체를 생성하는 메서드
+	
+	pstmt.setString(1,userID); //set : 아이디
+	
+	//4. db 에서 데이터 가져오기
+	//rs는 SQL 쿼리의 결과 집합으로 JDBC 객체임
+	//executeQuery()는 쿼리를 데이터베이스로 보내고 그 결과를 가져온다. 
+	ResultSet rs = null;
+	rs = pstmt.executeQuery();
+	
+	
+	//5. 조건 > 아이디 중복 불가능 
+		int result = 0;
+	if(rs.next()){
+		result = rs.getInt("count");
+	}
+	
+	
+	//기타. 값을 전달하는 방식 > gson
+	//서버에서 클라이언트로 데이터를 전달하기 위해 JSON 형식으로 데이터를 변환하고 전송하기 위함
+	Map<String,Integer> map = new HashMap<>();
+	map.put("count",result);
+	Gson gson = new Gson();
+	String json = gson.toJson(map);
+	out.println(json);
+	
+	
+%>

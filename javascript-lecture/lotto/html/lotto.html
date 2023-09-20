@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LOTTO</title>
+    <link rel="stylesheet" href="../css/layout.css" />
+  </head>
+  <body>
+    <div class="paper"></div>
+
+    <script>
+      const colors = ["yellow", "blue", "red", "gray", "green"];
+      const paper = document.querySelector(".paper");
+      for (let j = 0; j < 5; j++) {
+        paper.innerHTML += `<ul class="lotto"></ul>`;
+        const nums = Array(45)
+          .fill(0)
+          .map(function (item, index) {
+            //console.log(index + 1);
+            return index + 1;
+          });
+        const lotto = [];
+        for (let i = 0; i < 6; i++) {
+          const selected = nums.splice(Math.floor(Math.random() * nums.length), 1);
+          lotto.push(selected.pop());
+        }
+        lotto.sort(function (a, b) {
+          return a - b;
+        });
+        // 리팩토링
+        const _lotto = document.querySelector(`.lotto:nth-child(${j + 1})`);
+
+        lotto.forEach(function (item, index) {
+          const color = colors[Math.ceil(item / 10) - 1];
+          _lotto.innerHTML += `<li class=${color}>${item}</li>`;
+        });
+      }
+    </script>
+  </body>
+</html>

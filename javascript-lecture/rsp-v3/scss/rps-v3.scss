@@ -1,0 +1,34 @@
+// 전체 요소 가운데 정렬
+* {
+  margin: 0;
+  padding: 0;
+}
+div {
+  zoom: 1.5;
+}
+ul {
+  display: flex;
+  gap: 20px;
+}
+li {
+  list-style: none;
+}
+
+// 컨텐츠 요소 세부 정렬
+.computer {
+  display: flex;
+  justify-content: center;
+  margin: 100px 0;
+}
+.human {
+  zoom: 1.5;
+  display: flex;
+  justify-content: center;
+  margin-top: -50px;
+}
+.result {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  font-size: 20px;
+}

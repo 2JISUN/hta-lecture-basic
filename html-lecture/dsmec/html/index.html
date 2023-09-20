@@ -1,0 +1,298 @@
+<!-- clone site : https://www.dsmec.com/ -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- 탭 > 이름 -->
+    <title>[js]대우조선해양건설㈜</title>
+    <!-- 탭 > 로고 -->
+    <!-- <link rel="shortcut icon" href="" type="image/x-icon" /> -->
+
+    <!-- 연동시 외부에서 가져온 파일은 내가 작성한 파일보다 반드시 위에 작성해준다 -->
+    <!-- 연동시 외부에서 가져온 파일은 js파일에는 defer를 사용하지 않는다 > 내가 직접 작성한 js 파일에만 defer를 적용시켜준다 -->
+
+    <!-- 연동 > 폰트 > 구글 폰트 : https://fonts.google.com/-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- 연동 > 폰트 > 구글 앱 폰트 -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+
+    <!-- 연동 > css > 초기화 -->
+    <link rel="stylesheet" href="../css/reset.css" />
+    <!-- 연동 > css > 스와이퍼 라이브러리 : https://swiperjs.com/get-started-->
+    <link rel="stylesheet" href="../css/swiper-bundle.css" />
+    <!-- 연동 > css > 스플리팅 라이브러리-->
+    <link rel="stylesheet" href="../css/splitting.css" />
+
+    <!-- 연동 > scss > css > layout -->
+    <link rel="stylesheet" href="../css/layout.css" />
+    <!-- 연동 > scss > css > main -->
+    <link rel="stylesheet" href="../css/main.css" />
+
+    <!-- 연동 > js > 스와이퍼 라이브러리 : https://swiperjs.com/get-started-->
+    <script src="../js/swiper-bundle.min.js"></script>
+    <!-- 연동 > js > 스플리팅 라이브러리  -->
+    <script src="../js/splitting.min.js"></script>
+    <!-- 연동 > js > 애니메이션 라이브러리 : -->
+    <script src="../js/gsap.min.js"></script>
+    <!-- 연동 > js > 외부 라이브러리 > 이벤트 :  -->
+    <script src="../js/visual.js" defer></script>
+
+    <!-- 연동 > js > 내부 라이브러리 > 이벤트 -->
+    <script src="../js/ui.js" defer></script>
+  </head>
+
+  <body>
+    <!-- 헤더 start -->
+    <header class="header" id="header">
+      <!-- 헤더 > 로고 -->
+      <h1 class="logo">
+        <a href="">
+          <img src="../images/common/logo_wh.svg" class="white" alt="" />
+          <img src="../images/common/logo.svg" class="color" alt="" />
+        </a>
+      </h1>
+      <!-- 헤더 > 메뉴바 > 전체 -->
+      <nav class="gnb">
+        <!-- 헤더 > 메뉴바 > 전체 묶기 -->
+        <ul>
+          <!-- 헤더 > 메뉴바 > depth01 묶기 -->
+          <li>
+            <!-- 헤더 > 메뉴바 > depth01 명시 -->
+            <a href="" class="depth01">회사소개</a>
+            <!-- 헤더 > 메뉴바 > depth02 묶기 -->
+            <ul class="depth02">
+              <!-- 헤더 > 메뉴바 > depth02 명시-->
+              <li>
+                <a href="">인사말</a>
+              </li>
+              <li>
+                <a href="">비전</a>
+              </li>
+              <li>
+                <a href="">회사연혁</a>
+              </li>
+              <li>
+                <a href="">수상경력</a>
+              </li>
+              <li>
+                <a href="">조직도</a>
+              </li>
+              <li>
+                <a href="">찾아오시는길</a>
+              </li>
+            </ul>
+          </li>
+
+          <!-- 헤더 > 메뉴바 > depth01 묶기 -->
+          <li>
+            <!-- 헤더 > 메뉴바 > depth01 명시 -->
+            <a href="" class="depth01">사업소개</a>
+            <!-- 헤더 > 메뉴바 > depth02 묶기 -->
+            <ul class="depth02">
+              <!-- 헤더 > 메뉴바 > depth02 명시-->
+              <li>
+                <a href="">주요사업실적</a>
+              </li>
+              <li>
+                <a href="">토목분야</a>
+              </li>
+              <li>
+                <a href="">건축분야</a>
+              </li>
+              <li>
+                <a href="">주택분야</a>
+              </li>
+              <li>
+                <a href="">해외사업분야</a>
+              </li>
+              <li>
+                <a href="">기타</a>
+              </li>
+            </ul>
+          </li>
+
+          <!-- 헤더 > 메뉴바 > depth01 묶기 -->
+          <li>
+            <!-- 헤더 > 메뉴바 > depth01 명시 -->
+            <a href="" class="depth01">디지털홍보관</a>
+            <!-- 헤더 > 메뉴바 > depth02 묶기 -->
+            <ul class="depth02">
+              <li>
+                <!-- 헤더 > 메뉴바 > depth02 명시 -->
+                <a href="">홍보관</a>
+                <!-- 헤더 > 메뉴바 > depth03 묶기 -->
+                <ul class="depth03">
+                  <li>
+                    <!-- 헤더 > 메뉴바 > depth03 명시 -->
+                    <a href="">홍보영상</a>
+                  </li>
+                  <li>
+                    <a href="">멀티미디어홍보관</a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <!-- 헤더 > 메뉴바 > depth02 명시 -->
+                <a href="">CI / BI</a>
+                <!-- 헤더 > 메뉴바 > depth03 묶기 -->
+                <ul class="depth03">
+                  <li>
+                    <a href="">BI 소개</a>
+                  </li>
+                  <li>
+                    <a href="">서브 브랜드 소개</a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <!-- 헤더 > 메뉴바 > depth02 명시 -->
+                <a href="">기업문화</a>
+              </li>
+              <li>
+                <!-- 헤더 > 메뉴바 > depth02 명시 -->
+                <a href="">전자공고</a>
+              </li>
+              <li>
+                <!-- 헤더 > 메뉴바 > depth02 명시 -->
+                <a href="">공지사항</a>
+              </li>
+            </ul>
+          </li>
+
+          <!-- 헤더 > 메뉴바 > depth01 묶기 -->
+          <li>
+            <!-- 헤더 > 메뉴바 > depth01 명시 -->
+            <a href="" class="depth01">채용정보</a>
+            <!-- 헤더 > 메뉴바 > depth02 묶기 -->
+            <ul class="depth02">
+              <li>
+                <!-- 헤더 > 메뉴바 > depth02 명시 -->
+                <a href="">인재채용</a>
+                <!-- 헤더 > 메뉴바 > depth03 묶기 -->
+                <ul class="depth03">
+                  <li>
+                    <!-- 헤더 > 메뉴바 > depth03 명시 -->
+                    <a href="">채용공고</a>
+                  </li>
+                  <li>
+                    <a href="">채용방법</a>
+                  </li>
+                  <li>
+                    <a href="">전형방법</a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="">인사제도</a>
+                <ul class="depth03">
+                  <li>
+                    <a href="">인재상</a>
+                  </li>
+                  <li>
+                    <a href="">인사정책&복리후생</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+
+          <!-- 헤더 > 메뉴바 > depth01 묶기 -->
+          <li>
+            <a href="" class="depth01">고객센터</a>
+            <ul class="depth02">
+              <!-- 헤더 > 메뉴바 > depth01 > depth02 -->
+              <li>
+                <a href="">자주 묻는 질문</a>
+              </li>
+              <li>
+                <a href="">고객상담실</a>
+              </li>
+              <ul class="depth03">
+                <li>
+                  <a href="">퇴직자 증명서 신청</a>
+                </li>
+              </ul>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <!-- 헤더 > 사이드바 > 전체 -->
+      <ul class="util">
+        <li>
+          <a href="">엘크루</a>
+        </li>
+        <li>
+          <a href="">협력업체</a>
+        </li>
+      </ul>
+    </header>
+    <!-- 헤더 end -->
+
+    <!-- 메인 start -->
+    <!-- 메인 > 이미지 -->
+    <!-- 메인 > 이미지 > scss에서 반복문을 통해 넣음 -->
+    <div class="main-visual">
+      <!-- 메인 > 이미지 > 스와이퍼 감싸기(공식문서의 규칙) -->
+      <div class="swiper-wrapper visual-wrap">
+        <!-- 메인 > 이미지 > 스와이퍼 감싸기 > css 백그라운드 (헤더 이미지가 아님) -->
+        <!-- Slides -->
+        <div class="swiper-slide visual visual01">
+          <!-- 메인 > 이미지 > 스와이퍼 감싸기 > 이미지 위 텍스트 -->
+          <div class="txt-box">
+            <h2 data-splitting>대우</h2>
+            <p data-splitting>gdgdgdgdgdgdgdgdgdgdgdgdgdgdgdgdgdgdgdgdgdgdgdgdgdgdgdgdgdgdgddgkjhdhjhjlsdafhjlsfdhjsfdjlsdfa</p>
+            <p><span>평택</span></p>
+          </div>
+        </div>
+
+        <div class="swiper-slide visual visual02">
+          <div class="txt-box">
+            <h2 data-splitting>대우</h2>
+            <p data-splitting>gdgdgdgdgdgdgdgdgdgdgdgdgdgdgdgdgdgdgdgdgdgdgdgdgdgdgdgdgdgdgddgkjhdhjhjlsdafhjlsfdhjsfdjlsdfa</p>
+            <p><span>서울</span></p>
+          </div>
+        </div>
+        <div class="swiper-slide visual visual03">
+          <div class="txt-box">
+            <h2 data-splitting>대우</h2>
+            <p data-splitting>gdgdgdgdgdgdgdgdgdgdgdgdgdgdgdgdgdgdgdgdgdgdgdgdgdgdgdgdgdgdgddgkjhdhjhjlsdafhjlsfdhjsfdjlsdfa</p>
+            <p><span>어쩍</span></p>
+          </div>
+        </div>
+        <div class="swiper-slide visual visual04">
+          <div class="txt-box">
+            <h2 data-splitting>대우</h2>
+            <p data-splitting>gdgdgdgdgdgdgdgdgdgdgdgdgdgdgdgdgdgdgdgdgdgdgdgdgdgdgdgdgdgdgddgkjhdhjhjlsdafhjlsfdhjsfdjlsdfa</p>
+            <p><span>저쩌고</span></p>
+          </div>
+        </div>
+        <div class="swiper-slide visual visual05">
+          <div class="txt-box">
+            <h2 data-splitting>대우</h2>
+            <p data-splitting>gdgdgdgdgdgdgdgdgdgdgdgdgdgdgdgdgdgdgdgdgdgdgdgdgdgdgdgdgdgdgddgkjhdhjhjlsdafhjlsfdhjsfdjlsdfa</p>
+            <p><span>강원</span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 메인 > 이미지 > 스와이퍼 > 페이지네이션 -->
+      <div class="pagination"></div>
+
+      <!-- 메인 > 이미지 > 스와이퍼 > 네비게이션 -->
+      <button class="btn-prev btn">
+        <span class="material-icons"> arrow_back_ios </span>
+      </button>
+      <button class="btn-next btn">
+        <span class="material-icons"> arrow_forward_ios </span>
+      </button>
+    </div>
+    <!-- 메인 end -->
+  </body>
+</html>

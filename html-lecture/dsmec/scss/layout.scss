@@ -1,0 +1,149 @@
+html {
+  font-size: 20px;
+}
+
+body {
+  // 폰트 > 순서가 중요 > 영문, 한문, ..
+  font-family: "Roboto", "Noto Sans KR", 돋움;
+  font-size: 16px;
+  color: #111;
+}
+
+a {
+  // <a> 는 부모로부터 색상을 상속받지 않기 때문에 반드시 지정이 필요함
+  color: inherit;
+  // <a> 는 텍스트에 밑줄이 기본값이기 때문에 밑줄 제거를 위해 속성을 지정함
+  text-decoration: none;
+}
+
+p {
+  line-height: 1.5;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  z-index: 99;
+  width: 100%;
+  color: #fff;
+  height: 80px;
+  overflow: hidden;
+  //border-bottom: 1px solid #111;
+
+  &:after {
+    content: "";
+    display: block;
+    height: 1px;
+    width: 100%;
+    background-color: #ccc;
+    position: absolute;
+    left: 0;
+    top: 80px;
+    pointer-events: none;
+  }
+  &.open {
+    height: 400px;
+    background-color: #fff;
+    color: #111;
+    .logo {
+      .white {
+        opacity: 0;
+      }
+      .color {
+        opacity: 1;
+      }
+    }
+  }
+  .logo {
+    a {
+      img {
+        height: 50px;
+      }
+      .white {
+        position: absolute;
+      }
+      .color {
+        opacity: 1;
+      }
+    }
+  }
+  .gnb {
+    > ul {
+      display: flex;
+      text-align: center;
+      > li {
+        &:hover {
+          .depth01 {
+            color: #111;
+            &:after {
+              transform: scaleX(1);
+            }
+          }
+
+          .depth02 {
+            background-color: #f8f8f8;
+          }
+        }
+        .depth01 {
+          font-size: 30px;
+          font-weight: 500;
+          //background-color: #f00;
+          height: 80px;
+          display: flex;
+          align-items: center;
+          padding: 0 30px;
+          position: relative; // 기준점
+
+          &:after {
+            content: "";
+            display: block;
+            transform: scaleX(0);
+            height: 3px;
+            position: absolute;
+            left: 0px;
+            right: 0px;
+            bottom: 0;
+            background-color: #001aff;
+            transition: all 0.4s ease;
+          }
+        }
+        .depth02 {
+          font-size: 18px;
+          height: 350px;
+          padding-top: 30px;
+          a {
+            padding: 5px 0;
+            display: block;
+          }
+        }
+        .depth03 {
+          font-size: 16px;
+          color: #aaa;
+        }
+      }
+    }
+  }
+  .util {
+    display: flex;
+    align-items: center;
+    height: 80px;
+    // 가상의 태그 만들기
+    li {
+      display: flex;
+      // align-self: start; // 부모가 아닌 자신에게 적용
+      &:last-child:after {
+        display: none;
+      }
+      &:after {
+        content: "";
+        display: block;
+        width: 1px;
+        height: 14px;
+        background-color: aqua;
+        margin-right: 10px;
+        margin-left: 10px;
+      }
+    }
+  }
+}

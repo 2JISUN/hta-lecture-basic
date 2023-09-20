@@ -1,0 +1,128 @@
+@charset "UTF-8";
+html {
+  font-size: 20px;
+}
+
+body {
+  font-family: "Roboto", "Noto Sans KR", 돋움;
+  font-size: 16px;
+  color: #111;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+p {
+  line-height: 1.5;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  z-index: 99;
+  width: 100%;
+  color: #fff;
+  height: 80px;
+  overflow: hidden;
+}
+.header:after {
+  content: "";
+  display: block;
+  height: 1px;
+  width: 100%;
+  background-color: #ccc;
+  position: absolute;
+  left: 0;
+  top: 80px;
+  pointer-events: none;
+}
+.header.open {
+  height: 400px;
+  background-color: #fff;
+  color: #111;
+}
+.header.open .logo .white {
+  opacity: 0;
+}
+.header.open .logo .color {
+  opacity: 1;
+}
+.header .logo a img {
+  height: 50px;
+}
+.header .logo a .white {
+  position: absolute;
+}
+.header .logo a .color {
+  opacity: 1;
+}
+.header .gnb > ul {
+  display: flex;
+  text-align: center;
+}
+.header .gnb > ul > li:hover .depth01 {
+  color: #111;
+}
+.header .gnb > ul > li:hover .depth01:after {
+  transform: scaleX(1);
+}
+.header .gnb > ul > li:hover .depth02 {
+  background-color: #f8f8f8;
+}
+.header .gnb > ul > li .depth01 {
+  font-size: 30px;
+  font-weight: 500;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  padding: 0 30px;
+  position: relative;
+}
+.header .gnb > ul > li .depth01:after {
+  content: "";
+  display: block;
+  transform: scaleX(0);
+  height: 3px;
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  bottom: 0;
+  background-color: #001aff;
+  transition: all 0.4s ease;
+}
+.header .gnb > ul > li .depth02 {
+  font-size: 18px;
+  height: 350px;
+  padding-top: 30px;
+}
+.header .gnb > ul > li .depth02 a {
+  padding: 5px 0;
+  display: block;
+}
+.header .gnb > ul > li .depth03 {
+  font-size: 16px;
+  color: #aaa;
+}
+.header .util {
+  display: flex;
+  align-items: center;
+  height: 80px;
+}
+.header .util li {
+  display: flex;
+}
+.header .util li:last-child:after {
+  display: none;
+}
+.header .util li:after {
+  content: "";
+  display: block;
+  width: 1px;
+  height: 14px;
+  background-color: aqua;
+  margin-right: 10px;
+  margin-left: 10px;
+}/*# sourceMappingURL=layout.css.map */
