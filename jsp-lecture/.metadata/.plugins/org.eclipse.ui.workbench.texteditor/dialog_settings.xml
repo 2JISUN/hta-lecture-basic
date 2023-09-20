@@ -4,16 +4,16 @@
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="response"/>
+		<item key="selection" value="btnIDCheck"/>
 		<list key="findhistory">
+			<item value="isMemberInsert"/>
+			<item value="ode"/>
+			<item value="checkSQL"/>
+			<item value="전체"/>
 			<item value="response"/>
 			<item value="아이디 중복 확인"/>
 			<item value="postCode"/>
 			<item value="zip"/>
-			<item value="zipCode"/>
-			<item value="jdbcConn.conn"/>
-			<item value="&lt;input type=&quot;hidden&quot; name=&quot;userID&quot; value=&quot;&lt;%= userID %&gt;&quot; readonly&gt;"/>
-			<item value="b-test"/>
 		</list>
 		<list key="replacehistory">
 		</list>

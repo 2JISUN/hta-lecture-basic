@@ -3,8 +3,11 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../include/header.jsp" %>
 	<div class="container">
-		<form action="insert-member-process.jsp" method="post" class=""
-			name="member">
+		<form action="insert-member-process.jsp" 
+			  method="post" 
+			  class="" 
+			  id="joinForm"
+			  name="member">
 			<%
 			// 아이디
 			%>
@@ -129,6 +132,7 @@
 			<div class="mt-5 mb-5 d-flex justify-content-center">
 				<div class="">
 					<button type="submit" class="btn btn-primary" id="btnSubmit">회원가입</button>
+					<button type="submit" class="btn btn-primary" id="btnSubmitAjax">Ajax 회원가입</button>
 					<button type="reset" class="btn btn-secondary">취소</button>
 				</div>
 			</div>
@@ -167,23 +171,11 @@
 		});
 
 		// 기능 : 아이디, 비밀번호는 반드시 입력받아야 함
-		$("#btnSubmit").on("click", function(e) {
-			if ($("#userID").val().trim() === "") {
-				alert("id는 필수입력 사항입니다.");
-				$("#userID").val("");
-				$("#userID").focus();
-				return false;
-			} else if ($("#userPW").val().trim() === "") {
-				alert("password는 필수입력 사항입니다.");
-				$("#userPW").val("");
-				$("#userPW").focus();
-				return false;
-			} else if ($("#userPW02").val().trim() === "") {
-				alert("password 확인");
-				$("#userPW02").val("");
-				$("#userPW02").focus();
-				return false;
-			}
+		$("#btnSubmit, #btnSubmitAjax").on("click", function(e) {
+		    if ($("#userID").val().trim() === "" || $("#userPW").val().trim() === "" || $("#userName").val().trim() === "") {
+		        alert("아이디, 비밀번호, 이름은 필수로 입력되어야 합니다.");
+		        return false;
+		    }
 		});
 		
 		// 기능 : '비밀번호'와 '비밀번호 재확인' 입력값이 일치하는지 여부
@@ -214,8 +206,10 @@
 				data : {
 					userID : $("#userID").val(),
 				},
+				//method: "get",
 				success : function(data) {
-
+					//console.log("success");
+					//console.log(data);
 					if(data.count>0) {
 						alert("쓸 수 없는 아이디입니다.");
 						$("#userID").val("");
@@ -227,7 +221,6 @@
 					}
 				},
 				fail : function(error) {
-					// 요청 실패 또는 오류 처리
 					console.log(error);
 				},
 				complete : function(data) {
@@ -238,7 +231,9 @@
 			return false;
 		});
 		
-/* 		// 기능 : 비밀번호 보기/감추기 (유저선택사항)
+/* 		
+ 
+ 		// 기능 : 비밀번호 보기/감추기 (유저선택사항)
 		$("#btnShowPassword").on("click", function(){
 			if($("#userPW").attr("type")==="password"){
 				$("#userPW").attr("type","text");
@@ -248,6 +243,45 @@
 				$("#btnShowPassword").text("비밀번호 보기");
 			}
 			return false;
-		}); */
+		}); 
+*/
+		
+		
+		
+	    // 기능 : Ajax 회원가입
+		$("#btnSubmitAjax").on("click", function (e) {
+			$.ajax({
+				url:"../member/insert-member-ajax-process.jsp",
+				data:$("#joinForm").serialize(), /* 한 번에 다 바꿀 수 있는 js 메소드 */
+				success:function(response){
+					if(reponse.isMemberInsert==="success") {
+						alert("회원가입 되었습니다.");
+						location.href="../index/index.jsp";
+					} else {
+						alert("서버 오류입니다.");
+						history.back();
+					}
+				}
+			});
+		});
 	</script>
 <%@ include file="../include/footer.jsp" %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
