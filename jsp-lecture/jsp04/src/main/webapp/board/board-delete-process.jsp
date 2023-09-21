@@ -54,8 +54,5 @@ JDBCConnect jdbcConn = new JDBCConnect(); //Oracle 데이터베이스에 연결�
 			System.out.println("입력 오류");
 			ScriptWriter.alertAndBack(response, "비밀번호를 재확인해주세요.");
 		}
-	
-
-
 
 %>
