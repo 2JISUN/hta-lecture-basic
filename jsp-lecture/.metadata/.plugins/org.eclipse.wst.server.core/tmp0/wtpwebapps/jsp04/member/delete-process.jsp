@@ -44,6 +44,7 @@
 		ScriptWriter.alertAndBack(response, "비빌번호를 확인해 주세요.");
 	}
 	jdbcConn.close();
+	
 %>
 
 

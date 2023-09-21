@@ -30,7 +30,7 @@
 		</table>
 		
 		<div class="d-flex justify-content-center">
-			<button class="btn btn-primary">회원정본 변경 확인</button>
+			<button class="btn btn-primary">회원정보 변경 확인</button>
 			<a href="javascript:histroy.back();" class="btn btn-secondary mx-1">돌아가기</a>
 		</div>
 	</form>

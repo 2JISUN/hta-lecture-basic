@@ -1,8 +1,0 @@
-package util;
-
-public class CookieManager {
-	//cookie 만들기
-	public static void createCookie(String cookieName, String cookieValue, int time) {
-		
-	}
-}

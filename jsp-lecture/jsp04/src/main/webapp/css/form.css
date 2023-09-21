@@ -5,3 +5,7 @@
 .info{
 	max-width: 800px;
 }
+
+.content{
+ white-space: pre-line;	
+}

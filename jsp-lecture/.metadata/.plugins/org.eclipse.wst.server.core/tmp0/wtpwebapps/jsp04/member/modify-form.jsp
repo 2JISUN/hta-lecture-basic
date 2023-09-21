@@ -12,8 +12,10 @@
 
 <%@ include file="../include/header.jsp"%>
 <div class="container">
-	<form action="modify-member-process.jsp" method="post" class=""
-		name="member">
+	<form action="modify-member-process.jsp" 
+		  method="post" 
+		  class=""
+		  name="member">
 		<div class="row d-flex justify-content-center mt-5">
 			<div class="col-6">
 				<div class="mb-3">
@@ -24,9 +26,13 @@
 		<div class="row d-flex justify-content-center">
 			<div class="col-6">
 				<div class="mb-3">
-					<label for="userName" class="form-label">Name</label> <input
-						type="text" class="form-control" id="userName" value="<%= userName %>"
-						placeholder="user name" name="userName" />
+					<label for="userName" class="form-label">Name</label> 
+					<input type="text" 
+						   class="form-control" 
+						   id="userName" 
+						   name="userName"
+						   value="<%= userName %>"
+						   placeholder="user name" />
 				</div>
 			</div>
 		</div>
@@ -34,14 +40,19 @@
 			<div class="col-6">
 				<div class="mb-3">
 					<div class="row">
+					
 						<div class="col-6">
-							<label for="postCode" class="form-label">ZipCode</label> <input
-								type="text" class="form-control" id="postCode"
-								placeholder="post code" name="postCode" value="<%= postCode %>" />
+							<label for="postCode" class="form-label">ZipCode</label> 
+							<input  type="text" 
+									class="form-control" 
+									id="postCode"
+									placeholder="post code" 
+									name="postCode" 
+									value="<%= postCode %>" />
 						</div>
+						
 						<div class="col-6 mt-3 align-items-baseline px-0">
-							<button class="btn btn-primary mt-3" id="btnPostcode">우편번호
-								확인</button>
+							<button class="btn btn-primary mt-3" id="btnPostcode">우편번호 확인</button>
 						</div>
 					</div>
 				</div>
@@ -50,18 +61,28 @@
 		<div class="row d-flex justify-content-center">
 			<div class="col-6">
 				<div class="mb-3">
-					<label for="address" class="form-label">Address</label> <input
-						type="text" class="form-control" id="address" name="address"
-						placeholder="address"  value="<%= address %>" />
+					<label for="address" class="form-label">Address</label> 
+					<input
+							type="text" 
+							class="form-control" 
+							id="address" 
+							name="address"
+							placeholder="address"  
+							value="<%= address %>" />
 				</div>
 			</div>
 		</div>
 		<div class="row d-flex justify-content-center">
 			<div class="col-6">
 				<div class="mb-3">
-					<label for="detailAddress" class="form-label">Detail
-						Address</label> <input type="text" class="form-control" id="detailAddress"
-						placeholder="detail address" name="detailAddress" value="<%=addressDetail%>" />
+					<label for="detailAddress" class="form-label">Detail Address</label> 
+					<input 
+							type="text" 
+							class="form-control" 
+							id="detailAddress"
+							placeholder="detail address" 
+							name="detailAddress" 
+							value="<%=addressDetail%>" />
 				</div>
 			</div>
 		</div>
