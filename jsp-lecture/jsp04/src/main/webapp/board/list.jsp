@@ -5,34 +5,36 @@
     pageEncoding="UTF-8"%>
     
  <%
- 
-//0.전역변수 할당
-//get : request.getParameter를 사용하여 사용자가 입력한 정보를 받아옵니다.
 
-//1. driver 찾기
-//2. db연동 및 해제
-JDBCConnect jdbcConn = new JDBCConnect(); //Oracle 데이터베이스에 연결을 수행
- 
- 
+String strPage = request.getParameter("page");
+int intPage = 1;
+if(strPage==null || strPage.isEmpty()) {
+	intPage=1;
+} else {
+	intPage = Integer.parseInt(strPage);
+}
 
-//3. db접근 > 쿼리 작성 > select > db 가져오기 > executeQuery()
-//3-1. 쿼리 작성
-String sql = 
-"select *"+
-"from board " + 
-"order by regdate desc"
-		;
-//3-2. 쿼리 세팅(저장)
-PreparedStatement pstmt = null; //Prepared : SQL 문장을 실행하기
-pstmt = jdbcConn.conn.prepareStatement(sql); //prepare : PreparedStatement 객체를 생성하는 메서드
-//set : pstmt.setString를 사용하여 사용자가 입력한 정보를 db에 저장합니다.
+JDBCConnect jdbcConn = new JDBCConnect();
+PreparedStatement pstmt = null;
+String countSql = "select count(*) as total from board";  
+pstmt = jdbcConn.conn.prepareStatement(countSql);
+ResultSet countRs = pstmt.executeQuery();
+int total = 0;
+if(countRs.next()) {
+	total = countRs.getInt("total"); 
+}
+int listPerPage = 10; // 한번에 보여지는 list 갯수
+System.out.println("total==="+total+"(double)total/listPerPage"+(double)total/listPerPage+"total/listPerPage"+total/listPerPage);
+int pageTotal = (int)Math.ceil((double)total/listPerPage);   // 바닥에 뿌려질 pagination의 갯수
+System.out.println("pageTotal==="+pageTotal);
+String sql = "SELECT * FROM " + "(SELECT rownum AS num, b01.* from " + "(SELECT * FROM board ORDER BY NO DESC) b01"
+		+ ")" + "WHERE num >= ? AND num <= ?";
+pstmt = jdbcConn.conn.prepareStatement(sql);
+pstmt.setInt(1,(intPage-1)*listPerPage+1);
+pstmt.setInt(2,intPage*listPerPage);
 
-
-//4. db실행 > 쿼리 실행 > db 가져오기(결과 확인) : 화면에 뿌린다 > executeQuery()
-ResultSet rs = null; //rs는 SQL 쿼리의 결과 집합으로 JDBC 객체임
-rs = pstmt.executeQuery(); //executeQuery() 쿼리를 데이터베이스로 보내고 그 결과를 가져온다. 
- 
-%>   
+ResultSet rs = pstmt.executeQuery();
+%>
     
     
 <%@ include file="../include/header.jsp" %>
@@ -79,6 +81,30 @@ rs = pstmt.executeQuery(); //executeQuery() 쿼리를 데이터베이스로 보�
 			    <% } %>
 			  </tbody>
 			</table>
+			
+			<!-- 페이지네이션 -->
+
+			<nav aria-label="Page navigation example">
+				<ul class="pagination">
+					<li class="page-item">
+					<a class="page-link" href="#"
+						aria-label="Previous"> 
+						<span aria-hidden="true">&laquo;</span>
+					</a>
+					</li>
+					<%for(int i=1;i<=pageTotal;i++){ %>
+						<%if(i==intPage) { %>
+					<li class="page-item"><a class="page-link active" href="../board/list.jsp?page=<%=i%>"><%=i %></a></li>
+					<%} else { %>
+					<li class="page-item"><a class="page-link" href="../board/list.jsp?page=<%=i%>"><%=i %></a></li>
+					<%} %>
+					<%} %>
+					<li class="page-item"><a class="page-link" href="#"
+						aria-label="Next"> <span aria-hidden="true">&raquo;</span>
+					</a></li>
+				</ul>
+			</nav>
+
 			
 			<!-- 버튼 -->
 			<div class="d-flex justify-content-center mt-5">

@@ -81,16 +81,16 @@ ResultSet rs = pstmt.executeQuery();
 		<div></div>
 		<button class="btn btn-danger" id="btnAll">삭제</button>
 	</form>
-	<form action="../member/member-search-list.jsp">
-		<select name="searchItem">
-			<option value="name">이름</option>
-			<option value="id">아이디</option>
-			<option value="address">주소</option>
-			<option value="all">싹다</option>
-
-		</select> <input type="text" name="searchWord">
-		<button>검색</button>
-	</form>
+		<form action="../member/member-search-list.jsp">
+			<select name="searchItem">
+				<option value="name">이름</option>
+				<option value="id">아이디</option>
+				<option value="address">주소</option>
+				<option value="all">싹다</option>
+	
+			</select> <input type="text" name="searchWord">
+			<button>검색</button>
+		</form>
 </div>
 <script>
 	$("#checkAll").on("click", function() {
