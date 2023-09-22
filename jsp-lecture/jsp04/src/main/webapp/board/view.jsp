@@ -1,3 +1,4 @@
+<%@page import="util.CookieManager"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="common.JDBCConnect"%>
@@ -20,10 +21,44 @@ response.setContentType("text/html; charset=utf-8");
 //0.전역변수 할당
 //get : request.getParameter를 사용하여 사용자가 입력한 정보를 받아옵니다.
 int no = 0;
-String strNo=request.getParameter("no");
+
+//글 번호
+String strNo = request.getParameter("no");
 if(strNo!=null){
 	no = Integer.parseInt(strNo);
 }
+
+
+// 쿠키
+boolean isUpdate = false;
+String visitedCookieValue = CookieManager.readCookie(request,"visitedCookie");
+//첫 방문시 쿠키를 생성한다
+if(visitedCookieValue.isEmpty()){
+
+	System.out.println("방문한적 없음"); 
+	CookieManager.createCookie(response, "visitedCookie", strNo, 60*60*24); /* strNo : cookieValue가 핵심이다 */
+//첫 방문이 아니라면 쿠키를 생성하지 않고 조건을 걸어서 판단한다.
+//조건 : 글 별로 판단하기
+} else {
+	System.out.println("방문한적 있음");
+	
+	// 첫 방문이 아니고 
+	// 글 방문도 처음이 아니라면 조회수를 증가시키지 않는다
+	if(visitedCookieValue.contains(strNo)){
+		isUpdate = false;	// 조회수 증가x
+	// 첫 방문이 아니고 
+	// 글 방문이 처음일 경우 조회수를 증가시킨다.
+	} else {
+		isUpdate = true; 	// 조회수 증가o
+		CookieManager.deleteCookie(response, "visitedCookie");
+		CookieManager.createCookie(response, 
+								   "visitedCookie", 
+								   visitedCookieValue + "/" + strNo, 
+								   60*60*24);
+	}
+}
+
+
 
 
 
@@ -33,13 +68,23 @@ JDBCConnect jdbcConn = new JDBCConnect(); //Oracle 데이터베이스에 연결�
 PreparedStatement pstmt = null; //Prepared : SQL 문장을 실행하기
 
 
+
+
+
+
+
 //3. db접근 > 쿼리 작성 > select > db 가져오기 > executeQuery()
 //3-1. 쿼리 작성(순서중요)
 //조회수 업데이트 시키고 쿼리
-String updateSql = "update board set hit = hit +1 where no = ?"; //조회수 업데이트
-pstmt = jdbcConn.conn.prepareStatement(updateSql); //prepare : PreparedStatement 객체를 생성하는 메서드
-pstmt.setInt(1, no);
-pstmt.executeUpdate();
+
+if(isUpdate){
+	String updateSql = "update board set hit = hit +1 where no = ?"; //조회수 업데이트
+	pstmt = jdbcConn.conn.prepareStatement(updateSql); //prepare : PreparedStatement 객체를 생성하는 메서드
+	pstmt.setInt(1, no);
+	pstmt.executeUpdate();
+}
+
+
 
 //3-2. 쿼리 세팅(저장)
 

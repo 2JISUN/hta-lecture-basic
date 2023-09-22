@@ -7,6 +7,8 @@ String loggedID = (Stirng)session.getAttribute("loggedID");
 %> --%>
 
 
+
+
 <%@ include file="../include/header.jsp" %>
 
 <div class="container">
@@ -18,12 +20,15 @@ String loggedID = (Stirng)session.getAttribute("loggedID");
 			<!-- 데이터를 보내주는 방식 -->
 			<form action="../board/board-update-process.jsp"
 				  method="post">
-				<input type="hidden"
+<%-- 				<input type="hidden"
 					   name="loggedID"
-					   value="${sessionScope.loggedID }">
+					   value="${sessionScope.loggedID}">
 				<input type="hidden"
 					   name="loggedName"
-					   value="${sessionScope.loggedName }">
+					   value="${sessionScope.loggedName}"> --%>
+				<input type="hidden"
+					   name="no"
+					   value="${requestScope.no}">
 			
 				<!-- 제목 -->
 				<div class="mb-3">
@@ -32,7 +37,10 @@ String loggedID = (Stirng)session.getAttribute("loggedID");
 				  		 class="form-control" 
 				  		 id="title" 
 				  		 name="title" /*!!!*/
+				  		 value="${title}"
+				  	
 				  		 placeholder="제목을 쓰세요">
+				  		 ${requestScope.title}
 				</div>
 				
 				<!-- 내용 -->
@@ -41,7 +49,9 @@ String loggedID = (Stirng)session.getAttribute("loggedID");
 				  <textarea class="form-control" 
 					  		id="contenet" 
 					  		name="content" /*!!!*/
+					  		value="${contenet}"
 					  		rows="8">
+					  		${requestScope.content}
 				  </textarea>
 				</div>
 				

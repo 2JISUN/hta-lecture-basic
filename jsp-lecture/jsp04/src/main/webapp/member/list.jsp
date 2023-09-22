@@ -7,6 +7,13 @@
 
 <%
 
+
+
+ServletContext context = pageContext.getServletContext(); //절대경로를 얻는다
+System.out.println("context===" + context);
+String saveDirectory = "upload";
+String realFolder = context.getRealPath(saveDirectory);
+
 //0.전역변수 할당
 //get : request.getParameter를 사용하여 사용자가 입력한 정보를 받아옵니다.
 
@@ -102,10 +109,23 @@ rs = pstmt.executeQuery(); //executeQuery() 쿼리를 데이터베이스로 보�
 		   		<% } %>
 		  </tbody>
 		</table>
-		<button class="btn btn-danger" id="btnAll">
-			삭제
-		</button>
+		<button class="btn btn-danger" id="btnAll">삭제</button>
+		
 	</form>
+	<!-- 검색기능 추가 -->
+	<!-- 폼 태그 안의 태그에서 name이 중요하다 -->
+	<div class="d-flex justify-content-center mt-5">
+		<form action="../member/member-search-process.jsp" >
+						<select name="searchItem">
+							<option value="name">이름</option>
+							<option value="id">아이디</option>
+							<option value="address">주소</option>
+							<option value="all">전체</option>
+						</select>
+						<input type="text" name="searchWord" >
+						<button class="btn btn-primary mx-1" >검색</button>
+		</form>
+	</div>
 </div>
 
 <script>

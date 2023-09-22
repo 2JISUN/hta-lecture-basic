@@ -32,7 +32,7 @@ pstmt = jdbcConn.conn.prepareStatement(sql); //prepare : PreparedStatement 객�
 ResultSet rs = null; //rs는 SQL 쿼리의 결과 집합으로 JDBC 객체임
 rs = pstmt.executeQuery(); //executeQuery() 쿼리를 데이터베이스로 보내고 그 결과를 가져온다. 
  
- %>   
+%>   
     
     
 <%@ include file="../include/header.jsp" %>
@@ -82,7 +82,23 @@ rs = pstmt.executeQuery(); //executeQuery() 쿼리를 데이터베이스로 보�
 			
 			<!-- 버튼 -->
 			<div class="d-flex justify-content-center mt-5">
+				<a href="../board/list.jsp" class="btn btn-primary mx-1">목록</a>
 				<a href="../board/write.jsp" class="btn btn-primary mx-1">글작성</a>
+			</div>
+			
+			<!-- 검색기능 추가 -->
+			<!-- 폼 태그 안의 태그에서 name이 중요하다 -->
+
+			<div class="d-flex justify-content-center mt-5">
+				<form action="../board/board-search-process.jsp" >
+						<select name="searchItem">
+							<option value="title">제목</option>
+							<option value="name">글쓴이</option>
+							<option value="content">내용</option>
+						</select>
+						<input type="text" name="searchWord" >
+						<button class="btn btn-primary mx-1" >검색</button>
+				</form>
 			</div>
 		</div>
 	</div>

@@ -4,8 +4,8 @@
 	
 <%@ include file="../include/header.jsp" %>
 
-
-
+<!-- 데이터를 보내주는 방식 > 방법01 -->
+<%-- <%String strNo = request.getParameter("no");%> --%>
 
 
 <div class="container">

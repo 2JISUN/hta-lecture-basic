@@ -8,19 +8,19 @@
 //0.전역변수 할당
 //get : (String)session.getAttribute를 사용하여 페이지에 저장된 정보를 받아옵니다.
 
-// String loggedID = (String)session.getAttribute("loggedID");
-// String loggedName = (String)session.getAttribute("loggedName");
-
+	String loggedID = (String)session.getAttribute("loggedID");
+	//String loggedName = (String)session.getAttribute("loggedName");
 
 //get : request.getParameter를 사용하여 사용자가 입력한 정보를 받아옵니다.
-String title = request.getParameter("title"); //제목
-String content = request.getParameter("content"); //내용
-int no = 0;
-String strNo=request.getParameter("no");
-if(strNo!=null){
-	no = Integer.parseInt(strNo);
-}
-String loggedID = (String)session.getAttribute("loggedID");
+	String title = request.getParameter("title");
+	String content = request.getParameter("content");
+	String password = request.getParameter("password");
+	String strNo = request.getParameter("no");
+	int no = 0;
+	if(strNo!=null) {
+		no = Integer.parseInt(strNo);
+	}
+
 
 //1. driver 찾기
 //2. db연동
@@ -29,16 +29,16 @@ JDBCConnect jdbcConn = new JDBCConnect(); //Oracle 데이터베이스에 연결�
 //3. db접근 > 쿼리 작성 > INSERT, UPDATE, DELETE > db 업데이트 > executeUpdate()
 //3. db접근 > 쿼리 작성 > SELECT > db 가져오기 > executeQuery()
 //3-1. 쿼리 작성
-String sql = "update board set title = ?, content = ? where no = ? and id = ?";
+String sql = "update board set title = ?,content = ? where id = ? and no = ?";
 
 //3-2. 쿼리 세팅(저장)
 	PreparedStatement pstmt = null; //Prepared : SQL 문장을 실행하기
 	pstmt = jdbcConn.conn.prepareStatement(sql); //prepare : PreparedStatement 객체를 생성하는 메서드
 	//set : pstmt.setString를 사용하여 사용자가 입력한 정보를 db에 저장합니다.
-	pstmt.setString(1,title); 
+	pstmt.setString(1,title);
 	pstmt.setString(2,content);
-	pstmt.setInt(3,no);
-	pstmt.setString(4,loggedID); //세션값 ID
+	pstmt.setString(3,loggedID);
+	pstmt.setInt(4,no);
 	
 
 	
