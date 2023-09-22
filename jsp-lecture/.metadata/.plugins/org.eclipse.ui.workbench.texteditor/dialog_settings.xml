@@ -6,6 +6,7 @@
 		<item key="isRegEx" value="false"/>
 		<item key="selection" value=""/>
 		<list key="findhistory">
+			<item value="idx"/>
 			<item value="update"/>
 			<item value="글작성"/>
 			<item value="=&lt;%="/>
@@ -13,7 +14,6 @@
 			<item value="ode"/>
 			<item value="checkSQL"/>
 			<item value="전체"/>
-			<item value="response"/>
 		</list>
 		<list key="replacehistory">
 		</list>

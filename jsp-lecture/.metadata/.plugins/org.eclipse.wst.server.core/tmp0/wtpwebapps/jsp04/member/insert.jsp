@@ -11,54 +11,67 @@
 		<div class="row d-flex justify-content-center mt-5">
 			<div class="col-6">
 				<div class="mb-3">
-					<label for="userID" class="form-label">ID</label> <input
-						type="text" class="form-control" id="userID" placeholder="user id"
-						name="userID" />
-
+					<input 
+							type="text" 
+							class="form-control" 
+							id="userID" 
+							placeholder="아이디"
+							name="userID" />
 					<button class="btn btn-primary" id="btnIDCheck">아이디 중복 확인</button>
 				</div>
 			</div>
 		</div>
+		
+		
 		<%
 		// 비밀번호
 		%>
 		<div class="row d-flex justify-content-center">
 			<div class="col-6">
 				<div class="mb-3">
-					<label for="userPW" class="form-label">password</label> <input
-						type="password" class="form-control" id="userPW"
-						placeholder="user password" name="userPW" />
-
+					<input
+							type="password" 
+							class="form-control" 
+							id="userPW"
+							placeholder="비밀번호" 
+							name="userPW" />
 				</div>
 			</div>
 		</div>
+		
 		<%
 		// 비밀번호 재확인
 		%>
 		<div class="row d-flex justify-content-center">
 			<div class="col-6">
 				<div class="mb-3">
-					<label for="userPW02" class="form-label">password Confirm</label> <input
-						type="password" class="form-control" id="userPW02"
-						placeholder="user password" />
-
+					<input
+							type="password" 
+							class="form-control" 
+							id="userPW02"
+							placeholder="비밀번호 재학인" />
 					<div class="invalid-feedback">글자 써보기</div>
 				</div>
 			</div>
 		</div>
+		
 		<%
 		//이름
 		%>
 		<div class="row d-flex justify-content-center">
 			<div class="col-6">
 				<div class="mb-3">
-					<label for="userName" class="form-label">Name</label> <input
-						type="text" class="form-control" id="userName"
-						placeholder="user name" name="userName" />
-
+					<label for="userName" class="form-label">이름</label> 
+					<input
+							type="text" 
+							class="form-control" 
+							id="userName"
+							placeholder="이름" 
+							name="userName" />
 				</div>
 			</div>
 		</div>
+		
 		<%
 		//우편번호
 		%>
@@ -67,13 +80,17 @@
 				<div class="mb-3">
 					<div class="row">
 						<div class="col-6">
-							<label for="postCode" class="form-label">ZipCode</label> <input
-								type="text" class="form-control" id="postCode"
-								placeholder="post code" name="postCode" />
+							<label for="postCode" class="form-label">우편번호</label> 
+							<input
+									type="text" 
+									class="form-control" 
+									id="postCode"
+									placeholder="우편번호" 
+									name="postCode" />
 						</div>
+						
 						<div class="col-6 mt-3 align-items-baseline px-0">
-							<button class="btn btn-primary mt-3" id="btnPostcode">우편번호
-								확인</button>
+							<button class="btn btn-primary mt-3" id="btnPostcode">우편번호 확인</button>
 						</div>
 					</div>
 				</div>
