@@ -47,7 +47,17 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>Insert</servlet-name>
-    <url-pattern>/Insert</url-pattern>
+    <url-pattern>/member/insert</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>InsertProcess</display-name>
+    <servlet-name>InsertProcess</servlet-name>
+    <servlet-class>com.jisun.controller.member.InsertProcess</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>InsertProcess</servlet-name>
+    <url-pattern>/member/insert-process</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
@@ -57,6 +67,56 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>IndexController</servlet-name>
-    <url-pattern>/IndexController</url-pattern>
+    <url-pattern>/index/index</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Login</display-name>
+    <servlet-name>Login</servlet-name>
+    <servlet-class>com.jisun.controller.member.Login</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Login</servlet-name>
+    <url-pattern>/member/login</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>LoginProcess</display-name>
+    <servlet-name>LoginProcess</servlet-name>
+    <servlet-class>com.jisun.controller.member.LoginProcess</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LoginProcess</servlet-name>
+    <url-pattern>/member/login-process</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Info</display-name>
+    <servlet-name>Info</servlet-name>
+    <servlet-class>com.jisun.controller.member.Info</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Info</servlet-name>
+    <url-pattern>/member/info</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Logout</display-name>
+    <servlet-name>Logout</servlet-name>
+    <servlet-class>com.jisun.controller.member.Logout</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Logout</servlet-name>
+    <url-pattern>/member/logout</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>IDCheck</display-name>
+    <servlet-name>IDCheck</servlet-name>
+    <servlet-class>com.jisun.controller.member.IDCheck</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>IDCheck</servlet-name>
+    <url-pattern>/member/id-check</url-pattern>
   </servlet-mapping>
 </web-app>

@@ -4,8 +4,11 @@
 	<div class="container">
 		<%-- <h1>${pageContext.request.contextPath }</h1>--%>
 		
-		<form action="${pageContext.request.contextPath }/member/insert-process" method="post" class="" id="joinForm"
-			name="member">
+		<form action="../member/insert-process" 
+				method="post" 
+				class="" 
+				id="joinForm"
+				name="member">
 			<div class="row d-flex justify-content-center mt-5">
 				<div class="col-6">
 					<div class="mb-3">
@@ -97,7 +100,11 @@
 		</form>
 	</div>
 
+
+
 	<script>
+		let isIDCheck = false;
+		
 		function postcode() {
 			new daum.Postcode({
 				oncomplete : function(data) {
@@ -136,6 +143,9 @@
 				$("#userPW02").val("");
 				$("#userPW02").focus();
 				return false;
+			} else if (!isIDCheck){
+				alert("id 중복 체크를 해주세요");
+				return false;
 			}
 		});
 		$("#userPW02").on("keyup", function() {
@@ -167,7 +177,7 @@
 		
 		$("#btnIDCheck").on("click", function() {
 			$.ajax({
-				url : "idCheck.jsp",
+				url : "../member/id-check",
 				data : {
 					userID : $("#userID").val(),
 				},
@@ -175,6 +185,8 @@
 				success : function(data) {
 					//console.log("success");
 					//console.log(data);
+					
+					
 					if(data.count>0) {
 						alert("쓸 수 없는 아이디입니다.");
 						$("#userID").val("");
@@ -182,6 +194,7 @@
 						const useID = confirm("쓸 수 있는 아이디 입니다. 사용하시겠어요?");
 						if(useID) {
 							$("#userID").attr("readonly", true);
+							isIDCheck=true;
 						}
 					}
 				},
