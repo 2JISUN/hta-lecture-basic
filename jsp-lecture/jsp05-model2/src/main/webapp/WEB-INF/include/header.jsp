@@ -43,7 +43,7 @@
 			<li class="nav-item"><a href="../index/index" class="nav-link active"
 				aria-current="page">MyHome</a></li>
 			<li class="nav-item"><a href="../member/logout" class="nav-link">로그아웃</a></li>
-			<li class="nav-item"><a href="../member/info?userID=${loggedID }" class="nav-link">${loggedName }</a></li>
+			<li class="nav-item"><a href="../member/info?userID=${loggedID }" class="nav-link">${sessionScope.loggedName }</a></li>
 			<li class="nav-item"><a href="../board/list" class="nav-link">게시판</a></li>
 		</ul>
 		</c:otherwise>

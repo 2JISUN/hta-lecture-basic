@@ -8,15 +8,21 @@
 				method="post" 
 				class="" 
 				id="joinForm"
-				name="member">
+				name="member"
+				enctype="multipart/form-data">  <!-- 이미지 업로드를 위한 속성 -->
+				
+			<!-- 이름 -->
 			<div class="row d-flex justify-content-center mt-5">
 				<div class="col-6">
 					<div class="mb-3">
 						<div class="row">
 							<div class="col-6">
-								<label for="userID" class="form-label">ID</label> 
-								<input type="text" class="form-control" id="userID"
-								placeholder="user id" name="userID" />
+								<input 
+									type="text" 
+									class="form-control" 
+									id="userID"
+									placeholder="아이디" 
+									name="userID" />
 							</div>
 							<div class="col-6  mt-3 d-flex align-items-baseline px-0">
 								<button class="btn btn-primary mt-3" id="btnIDCheck">아이디 중복 확인</button>
@@ -25,47 +31,95 @@
 					</div>
 				</div>
 			</div>
+			
+			<!-- 비밀번호 -->
 			<div class="row d-flex justify-content-center">
 				<div class="col-6">
 					<div class="mb-3">
-						<label for="userPW" class="form-label">password</label> <input
-							type="password" class="form-control" id="userPW"
-							placeholder="user password" name="userPW" />
+						<input
+							type="password" 
+							class="form-control" 
+							id="userPW"
+							placeholder="비밀번호" 
+							name="userPW" />
 					</div>
 				</div>
 			</div>
+			
+			<!-- 비밀번호 재확인 -->
 			<div class="row d-flex justify-content-center">
 				<div class="col-6">
 					<div class="mb-3">
-						<label for="userPW02" class="form-label">password Confirm</label>
-						<input type="password" class="form-control" id="userPW02"
-							placeholder="user password" />
+						<input 
+							type="password" 
+							class="form-control" 
+							id="userPW02"
+							placeholder="비밀번호 재확인" />
 						<div class="invalid-feedback">글자 써보기</div>
 					</div>
 				</div>
 			</div>
 
+			<!-- 이름 -->
 			<div class="row d-flex justify-content-center">
 				<div class="col-6">
 					<div class="mb-3">
-						<label for="userName" class="form-label">Name</label> <input
-							type="text" class="form-control" id="userName"
-							placeholder="user name" name="userName" />
+						<input
+							type="text" 
+							class="form-control" 
+							id="userName"
+							placeholder="이름" 
+							name="userName" />
 					</div>
 				</div>
 			</div>
+			
+			<!-- 이메일 -->
+			<div class="row d-flex justify-content-center">
+				<div class="col-6">
+					<div class="mb-3">
+						
+						<input
+							type="email" 
+							class="form-control" 
+							id="email"
+							placeholder="이메일" 
+							name="email" />
+					</div>
+				</div>
+			</div>
+			
+			<!-- 전화번호 -->
+			<div class="row d-flex justify-content-center">
+				<div class="col-6">
+					<div class="mb-3">
+						
+						<input
+							type="text" 
+							class="form-control" 
+							id="tel"
+							placeholder="전화번호를 입력해주세요" 
+							name="tel" />
+					</div>
+				</div>
+			</div>
+			
+			<!-- 주소지 -->
 			<div class="row d-flex justify-content-center">
 				<div class="col-6">
 					<div class="mb-3">
 						<div class="row">
 							<div class="col-6">
-								<label for="postCode" class="form-label">ZipCode</label> <input
-									type="text" class="form-control" id="postCode"
-									placeholder="post code" name="postCode" />
+								<input
+									type="text" 
+									class="form-control" 
+									id="postCode"
+									placeholder="우편번호" 
+									name="postCode" />
 							</div>
 							<div class="col-6 mt-3 align-items-baseline px-0">
 								<button class="btn btn-primary mt-3" id="btnPostcode">우편번호
-									확인</button>
+									검색</button> 
 							</div>
 						</div>
 					</div>
@@ -74,22 +128,42 @@
 			<div class="row d-flex justify-content-center">
 				<div class="col-6">
 					<div class="mb-3">
-						<label for="address" class="form-label">Address</label> <input
-							type="text" class="form-control" id="address" name="address"
-							placeholder="address" />
+						<input
+							type="text" 
+							class="form-control" 
+							id="address" 
+							name="address"
+							placeholder="주소" />
 					</div>
 				</div>
 			</div>
 			<div class="row d-flex justify-content-center">
 				<div class="col-6">
 					<div class="mb-3">
-						<label for="detailAddress" class="form-label">Detail
-							Address</label> <input type="text" class="form-control"
-							id="detailAddress" placeholder="detail address"
+						<input 
+							type="text" 
+							class="form-control"
+							id="detailAddress" 
+							placeholder="상세주소"
 							name="detailAddress" />
 					</div>
 				</div>
 			</div>
+			
+			<div class="row d-flex justify-content-center">
+				<div class="col-6">
+					<div class="mb-3">
+						<input 
+							type="file" 
+							class="form-control"
+							id="profile" 
+							placeholder="프로필 이미지(png, jpg)"
+							name="profile" 
+							accept=".jpg,.png,.gif,jpeg"/>
+					</div>
+				</div>
+			</div>
+			
 			<div class="mt-5 mb-5 d-flex justify-content-center">
 				<div class="">
 					<button type="submit" class="btn btn-primary" id="btnSubmit">회원가입</button>

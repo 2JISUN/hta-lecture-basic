@@ -13,6 +13,8 @@ DTO 클래스는 데이터의 전달과 저장을 단순하게 하고, 데이터
 
 package com.jisun.dto;
 
+import jakarta.servlet.http.Part;
+
 public class Member {
 	
 	/*
@@ -20,14 +22,22 @@ public class Member {
 	   생성방법 : 직접 작성
 	*/
 	
-	private int no; 
-	private String id;
+
+
+
+
+
+
 	private String password;
 	private String name;
 	private int postcode;
 	private String address;
 	private String addressdetail;
 	private String regdate;
+	private String email;
+	private String tel;
+	private String profile; //경로로 삽입 (Part는 사진삽입일때만)
+	
 	
 	
 	
@@ -42,53 +52,135 @@ public class Member {
 	 	객체 지향 프로그래밍의 원칙을 준수하고 유지보수성을 향상
 	*/
 	
+	private int no; 
 	public int getNo() {
 		return no;
 	}
+
+
+
 	public void setNo(int no) {
 		this.no = no;
 	}
+
+
+
 	public String getId() {
 		return id;
 	}
+
+
+
 	public void setId(String id) {
 		this.id = id;
 	}
+
+
+
 	public String getPassword() {
 		return password;
 	}
+
+
+
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
+
+
 	public String getName() {
 		return name;
 	}
+
+
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
+
+
 	public int getPostcode() {
 		return postcode;
 	}
+
+
+
 	public void setPostcode(int postcode) {
 		this.postcode = postcode;
 	}
+
+
+
 	public String getAddress() {
 		return address;
 	}
+
+
+
 	public void setAddress(String address) {
 		this.address = address;
 	}
+
+
+
 	public String getAddressdetail() {
 		return addressdetail;
 	}
+
+
+
 	public void setAddressdetail(String addressdetail) {
 		this.addressdetail = addressdetail;
 	}
+
+
+
 	public String getRegdate() {
 		return regdate;
 	}
+
+
+
 	public void setRegdate(String regdate) {
 		this.regdate = regdate;
+	}
+
+
+
+	public String getEmail() {
+		return email;
+	}
+
+
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+
+
+	public String getTel() {
+		return tel;
+	}
+
+
+
+	public void setTel(String tel) {
+		this.tel = tel;
+	}
+
+
+
+	public String getProfile() {
+		return profile;
+	}
+
+
+
+	public void setProfile(String profile) {
+		this.profile = profile;
 	}
 	
 	
@@ -99,18 +191,17 @@ public class Member {
 	 객체를 문자열로 표현하기 위한 toString() 메서드가 구현되어 있습니다. 
 	 이 메서드는 객체를 문자열로 표현할 때 각 변수의 값을 포함한 형식을 정의합니다.
 	 */
+	
+
+
+	private String id;
 	@Override
 	public String toString() {
-		return "Member [no=" + no + 
-					", id=" + id + 
-					", password=" + password + 
-					", name=" + name + 
-					", postcode=" + postcode + 
-					", address=" + address + 
-					", addressdetail=" + addressdetail + 
-					", regdate=" + regdate + 
-					"]";
+		return "Member [id=" + id + ", password=" + password + ", name=" + name + ", postcode=" + postcode
+				+ ", address=" + address + ", addressdetail=" + addressdetail + ", regdate=" + regdate + ", email="
+				+ email + ", tel=" + tel + ", profile=" + profile + ", no=" + no + "]";
 	}
+
 	
 	
 	/*
@@ -140,6 +231,7 @@ public class Member {
 				String id, 
 				String password, 
 				String name, 
+				
 				int postcode, 
 				String address, 
 				String addressdetail,
@@ -149,6 +241,7 @@ public class Member {
 									this.id = id;
 									this.password = password;
 									this.name = name;
+									
 									this.postcode = postcode;
 									this.address = address;
 									this.addressdetail = addressdetail;

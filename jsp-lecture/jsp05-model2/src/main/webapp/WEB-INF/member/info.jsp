@@ -10,28 +10,34 @@
 	<table class="table striped">
 		<tbody>
 			<tr>
-				<th scope="row">ID</th>
+				<th scope="row">프로필</th>
+				<td>
+					<img src="${pageContext.request.contextPath }/upload/${infoMember.profile}">
+				</td>  
+			</tr>
+			<tr>
+				<th scope="row">아이디</th>
 				<td>${loggedID }</td>  <!-- 아이디와 이름은 세션에 있음 -->
 			</tr>
 			<tr>
-				<th scope="row">password</th>
+				<th scope="row">비밀번호</th>
 				<td>${infoMember.password }</td>
 			</tr>
 			<tr>
-				<th scope="row">name</th>
+				<th scope="row">이름</th>
 				<td>${loggedName}</td> <!-- 아이디와 이름은 세션에 있음 -->
 			</tr>
 			<tr>
-				<th scope="row">post code</th>
-				<td>${infoMember.postcode }</td>
+				<th scope="row">우편번호</th>
+				<td>${infoMember.postcode}</td>
 			</tr>
 			<tr>
-				<th scope="row">address</th>
-				<td>${infoMember.address }</td>
+				<th scope="row">주소</th>
+				<td>${infoMember.address}</td>
 			</tr>
 			<tr>
-				<th scope="row">regdate</th>
-				<td>${infoMember.regdate }</td>
+				<th scope="row">가입날짜</th>
+				<td>${infoMember.regdate}</td>
 			</tr>
 		</tbody>
 	</table>

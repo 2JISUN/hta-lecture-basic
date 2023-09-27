@@ -12,9 +12,12 @@ package com.jisun.service;
 import com.jisun.dto.Member;
 
 public interface MemberService {
-	public int insertMember(Member member);
-	public Member loginMember(String userID,String userPW);
-	public Member infoMember(String userID);
+	int insertMember(Member member);
+	Member loginMember(String userID,String userPW);
+	Member infoMember(String userID);
 	int idCheck(String userID);
 	int deleteMember(String userID, String userPW);
+	Member modifyMember(String userID,String userPW);
+	int modifyMember(Member modifyMember);
+	
 }

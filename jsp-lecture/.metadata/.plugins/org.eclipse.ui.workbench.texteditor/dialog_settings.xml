@@ -4,16 +4,16 @@
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value=""/>
+		<item key="selection" value="detail"/>
 		<list key="findhistory">
+			<item value="detail"/>
+			<item value="loggedID"/>
+			<item value="loggedName"/>
+			<item value="saveIDCookie"/>
+			<item value="jakarta.servlet.http.Cookie"/>
+			<item value="btnPostcode"/>
+			<item value="/WEB-INF/member/login.jsp"/>
 			<item value="idx"/>
-			<item value="update"/>
-			<item value="글작성"/>
-			<item value="=&lt;%="/>
-			<item value="isMemberInsert"/>
-			<item value="ode"/>
-			<item value="checkSQL"/>
-			<item value="전체"/>
 		</list>
 		<list key="replacehistory">
 		</list>

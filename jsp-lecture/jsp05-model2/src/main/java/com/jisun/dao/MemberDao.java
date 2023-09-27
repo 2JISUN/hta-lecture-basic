@@ -28,7 +28,7 @@ public class MemberDao implements MemberService {
 	public int insertMember(Member member) {
 		int result = 0;
 		JDBCConnect jdbcConn = new JDBCConnect();
-		String sql = "insert into member values(seq_member.nextval,?,?,?,?,?,?,sysdate)";
+		String sql = "insert into member values(seq_member.nextval,?,?,?,?,?,?,?,?,sysdate,?)";
 		try {
 			
 			PreparedStatement pstmt = jdbcConn.conn.prepareStatement(sql);
@@ -36,9 +36,12 @@ public class MemberDao implements MemberService {
 			pstmt.setString(1,member.getId());
 			pstmt.setString(2,member.getPassword());
 			pstmt.setString(3,member.getName());
-			pstmt.setInt(4,member.getPostcode());
-			pstmt.setString(5,member.getAddress());
-			pstmt.setString(6,member.getAddressdetail());
+			pstmt.setString(4,member.getEmail());
+			pstmt.setString(5,member.getTel());
+			pstmt.setInt(6,member.getPostcode());
+			pstmt.setString(7,member.getAddress());
+			pstmt.setString(8,member.getAddressdetail());
+			pstmt.setString(9,member.getProfile());
 			
 			result = pstmt.executeUpdate();
 
@@ -95,6 +98,9 @@ public class MemberDao implements MemberService {
 				infoMember.setAddressdetail(rs.getString("addressdetail"));
 				infoMember.setPostcode(rs.getInt("postcode"));
 				infoMember.setRegdate(rs.getString("regdate"));
+				infoMember.setEmail(rs.getString("email"));
+				infoMember.setTel(rs.getString("tel"));
+				infoMember.setProfile(rs.getString("profile"));
 			}
 			
 		} catch (SQLException e) {
@@ -131,6 +137,78 @@ public class MemberDao implements MemberService {
 	//사용자 탈퇴를 위한 메서드입니다.
 	@Override
 	public int deleteMember(String userID, String userPW) {
-		return 0;
+		int result = 0;
+		
+		JDBCConnect jdbcConn = new JDBCConnect();
+		try {
+			String sql = "delete from member where id=? and password=?";
+			PreparedStatement pstmt = jdbcConn.conn.prepareStatement(sql);
+			pstmt.setString(1, userID);
+			pstmt.setString(2, userPW);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			jdbcConn.close();
+		}
+		return result;
 	}
+
+	// 회원정보 수정을 위한 메서드입니다.
+	public Member modifyPasswordConfirm(String userID, String userPW) {
+		Member modifyMember = null;
+		
+		JDBCConnect jdbcConn = new JDBCConnect();
+		try {
+			String sql = "select * from member where id=? and password=?";
+			PreparedStatement pstmt = jdbcConn.conn.prepareStatement(sql);
+			pstmt.setString(1, userID);
+			pstmt.setString(2, userPW);
+			ResultSet rs = pstmt.executeQuery();
+			if(rs.next()) {
+				
+				modifyMember = new Member();
+				modifyMember.setAddress(rs.getString("address"));
+				modifyMember.setAddressdetail(rs.getString("addressdetail"));
+				modifyMember.setPostcode(rs.getInt("postcode"));		
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			jdbcConn.close();
+		}
+		return modifyMember;
+		
+	}
+
+
+
+	
+	
+	//회원정보 수정 메서드입니다.
+	public int modifyMember(Member modifyMember) {
+		int result = 0;
+		JDBCConnect jdbcConn = new JDBCConnect();
+		try {
+			String sql = "update member set name=?, address=?, addressdetail=?, postcode=? where id=?";
+			PreparedStatement pstmt = jdbcConn.conn.prepareStatement(sql);
+			pstmt.setString(1, modifyMember.getName());
+			pstmt.setString(2, modifyMember.getAddress());
+			pstmt.setString(3, modifyMember.getAddressdetail());
+			pstmt.setInt(4, modifyMember.getPostcode());
+			pstmt.setString(5, modifyMember.getId());
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			jdbcConn.close();
+		}
+		return result;
+	}
+	
+	
+	
+	
 }
+

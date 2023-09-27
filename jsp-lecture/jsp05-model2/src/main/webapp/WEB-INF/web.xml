@@ -119,4 +119,54 @@
     <servlet-name>IDCheck</servlet-name>
     <url-pattern>/member/id-check</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Delete</display-name>
+    <servlet-name>Delete</servlet-name>
+    <servlet-class>com.jisun.controller.member.Delete</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Delete</servlet-name>
+    <url-pattern>/member/delete</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DeleteProcess</display-name>
+    <servlet-name>DeleteProcess</servlet-name>
+    <servlet-class>com.jisun.controller.member.DeleteProcess</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteProcess</servlet-name>
+    <url-pattern>/member/delete-process</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Modify</display-name>
+    <servlet-name>Modify</servlet-name>
+    <servlet-class>com.jisun.controller.member.Modify</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Modify</servlet-name>
+    <url-pattern>/member/modify</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ModifyConfirm</display-name>
+    <servlet-name>ModifyConfirm</servlet-name>
+    <servlet-class>com.jisun.controller.member.ModifyConfirm</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ModifyConfirm</servlet-name>
+    <url-pattern>/member/modify-confirm</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ModifyProcess</display-name>
+    <servlet-name>ModifyProcess</servlet-name>
+    <servlet-class>com.jisun.controller.member.ModifyProcess</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ModifyProcess</servlet-name>
+    <url-pattern>/member/modify-process</url-pattern>
+  </servlet-mapping>
 </web-app>
