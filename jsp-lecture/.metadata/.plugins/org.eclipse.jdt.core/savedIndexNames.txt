@@ -9,7 +9,6 @@ INDEX VERSION 1.134+C:\Users\user\Desktop\2JISUN\jsp-lecture\.metadata\.plugins\
 602277522.index
 2436242453.index
 2181807325.index
-3591493680.index
 1377735329.index
 3397514302.index
 1014353413.index

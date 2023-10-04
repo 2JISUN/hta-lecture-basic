@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="jakarta.tags.core" prefix="c"%>
+<%@ taglib uri="jakarta.tags.functions" prefix="fn"%>
     
 
 <!DOCTYPE html>
@@ -48,13 +49,12 @@
 				<a href="../member/info?userID=${loggedID }" class="nav-link">
 					<c:choose>
 						<c:when test="${not empty loggedMember.profile}">
-								<img src="${pageContext.request.contextPath }/upload/${infoMember.profile}" 
-									 class="profile">
+							<img src="${pageContext.request.contextPath }/upload/${loggedMember.profile}" 
+								 class="profile-small">
 						</c:when>
 						<c:otherwise>
-			
-								<img src="../images/user.png" 
-									 class="profile-small">
+							<img src="../images/user.png" 
+								 class="profile-small">
 						</c:otherwise>
 					</c:choose>
 				</a>

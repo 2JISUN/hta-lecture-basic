@@ -64,13 +64,19 @@ public class InsertProcess extends HttpServlet {
 		
 		
 		Part profile = request.getPart("profile"); //프로필 이미지
-		//경로지정방법1 내부에 저장
+		//경로지정방법1 내부(.metadata)에 저장
 		//String uploadDirectory = "upload";
 		//String realUploadPath = getServletContext().getRealPath(uploadDirectory); // 업로드 디렉토리의 실제 경로를 가져옵니다.
+			//만약 경로에 upload 폴더가 없다면 만들어주기
+			//File dir = new File(realUploadPath);
+			//if(!dir.exists()) {
+			//	dir.mkdir();
+			//}
 		
-		//경로지정방법2 외부(c드라이브)에 저장
+		//경로지정방법2 외부(c드라이브)에 저장 > server.xml에 외부경로를 반드시 추가해주어야함
 		String uploadDirectory = "C:\\upload"; //이미지를 업로드할 디렉토리 경로를 지정
-		String realUploadPath = uploadDirectory; //server.xml에 외부경로 추가해줌
+		String realUploadPath = uploadDirectory; // 업로드 디렉토리의 실제 경로를 가져옵니다.
+		
 		
 		String partHeader = profile.getHeader("Content-disposition"); // 프로필 이미지의 Content-Disposition 헤더 정보
 		String partHeaderArray[] = partHeader.split("filename="); // Content-Disposition 헤더에서 파일 이름을 추출

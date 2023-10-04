@@ -4,16 +4,16 @@
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="detail"/>
+		<item key="selection" value=""/>
 		<list key="findhistory">
+			<item value="sep"/>
+			<item value="postCode"/>
+			<item value="private int no"/>
 			<item value="detail"/>
 			<item value="loggedID"/>
 			<item value="loggedName"/>
 			<item value="saveIDCookie"/>
 			<item value="jakarta.servlet.http.Cookie"/>
-			<item value="btnPostcode"/>
-			<item value="/WEB-INF/member/login.jsp"/>
-			<item value="idx"/>
 		</list>
 		<list key="replacehistory">
 		</list>

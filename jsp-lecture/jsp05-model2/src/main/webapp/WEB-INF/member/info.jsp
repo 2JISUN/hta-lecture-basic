@@ -10,24 +10,24 @@ s
 	<table class="table striped">
 		<tbody>
 			<c:choose>
-			<c:when test="${not empty infoMember.profile}">
-			<tr>
-				<th scope="row">프로필</th>
-				<td>
-					<img src="${pageContext.request.contextPath }/upload/${infoMember.profile}" 
-						 class="profile">
-				</td>  
-			</tr>
-			</c:when>
-			<c:otherwise>
-			<tr>
-				<th scope="row">프로필</th>
-				<td>
-					<img src="../images/user.png" 
-						 class="profile">
-				</td>  
-			</tr>
-			</c:otherwise>
+				<c:when test="${not empty infoMember.profile}">
+				<tr>
+					<th scope="row">프로필</th>
+					<td>
+						<img src="${pageContext.request.contextPath }/upload/${infoMember.profile}" 
+							 class="profile">
+					</td>  
+				</tr>
+				</c:when>
+				<c:otherwise>
+				<tr>
+					<th scope="row">프로필</th>
+					<td>
+						<img src="../images/user.png" 
+							 class="profile">
+					</td>  
+				</tr>
+				</c:otherwise>
 			</c:choose>
 			
 			<tr>

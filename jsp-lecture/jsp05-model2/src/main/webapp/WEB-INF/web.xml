@@ -169,4 +169,34 @@
     <servlet-name>ModifyProcess</servlet-name>
     <url-pattern>/member/modify-process</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>BoardWrite</display-name>
+    <servlet-name>BoardWrite</servlet-name>
+    <servlet-class>com.jisun.controller.board.BoardWrite</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BoardWrite</servlet-name>
+    <url-pattern>/board/write</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>BoardWriteProcess</display-name>
+    <servlet-name>BoardWriteProcess</servlet-name>
+    <servlet-class>com.jisun.controller.board.BoardWriteProcess</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BoardWriteProcess</servlet-name>
+    <url-pattern>/board/write-process</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>BoardView</display-name>
+    <servlet-name>BoardView</servlet-name>
+    <servlet-class>com.jisun.controller.board.BoardView</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BoardView</servlet-name>
+    <url-pattern>/board/view</url-pattern>
+  </servlet-mapping>
 </web-app>
