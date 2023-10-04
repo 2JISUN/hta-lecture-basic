@@ -164,6 +164,19 @@
 				</div>
 			</div>
 			
+			<!-- 프로필 이미지 미리보기 -->
+			<div class="row d-flex justify-content-center">
+				<div class="col-6">
+					<div class="mb-3">
+						<lable>프로필 이미지 미리보기</lable>
+						<div class="preview"></div>
+					</div>
+				</div>
+			</div>
+			
+			
+			
+			
 			<div class="mt-5 mb-5 d-flex justify-content-center">
 				<div class="">
 					<button type="submit" class="btn btn-primary" id="btnSubmit">회원가입</button>
@@ -282,5 +295,27 @@
 			});
 			return false;
 		});
+		
+		// 이미지 미리보기
+		$("#profile").on("change",function(e){
+			const file = e.target.files[0];
+			const reader = new FileReader();
+			const ext = file.name.substring(file.name.lastIndexOf(".")+1);
+			
+			if(!(ext==="png"||ext==="jpg"||ext==="gif")){
+				alret("png,jpg,gif 만 프로필 이미지로 사용가능합니다");
+				$(".profile").val("");
+				return false;
+			} else {
+				reader.onload = function(e){
+					$(".preview").html(`<img src="\${e.target.result}">`)
+				}
+				
+				
+			}
+			
+			reader.readAsDataURL(file);
+		})
+		
 	</script>
 <%@ include file="../include/footer.jsp" %>

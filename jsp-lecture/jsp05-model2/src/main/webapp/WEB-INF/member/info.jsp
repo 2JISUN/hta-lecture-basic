@@ -5,16 +5,31 @@
 		
 <%@ include file="../include/header.jsp"%>
 
-
+s
 <div class="info w-100 m-auto">
 	<table class="table striped">
 		<tbody>
+			<c:choose>
+			<c:when test="${not empty infoMember.profile}">
 			<tr>
 				<th scope="row">프로필</th>
 				<td>
-					<img src="${pageContext.request.contextPath }/upload/${infoMember.profile}">
+					<img src="${pageContext.request.contextPath }/upload/${infoMember.profile}" 
+						 class="profile">
 				</td>  
 			</tr>
+			</c:when>
+			<c:otherwise>
+			<tr>
+				<th scope="row">프로필</th>
+				<td>
+					<img src="../images/user.png" 
+						 class="profile">
+				</td>  
+			</tr>
+			</c:otherwise>
+			</c:choose>
+			
 			<tr>
 				<th scope="row">아이디</th>
 				<td>${loggedID }</td>  <!-- 아이디와 이름은 세션에 있음 -->

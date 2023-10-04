@@ -70,6 +70,7 @@ public class MemberDao implements MemberService {
 				loggedMember = new Member();
 				loggedMember.setId(rs.getString("id"));
 				loggedMember.setName(rs.getString("name"));
+				loggedMember.setProfile(rs.getString("profile"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

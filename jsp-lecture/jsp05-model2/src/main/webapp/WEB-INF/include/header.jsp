@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="/jsp05-model2/css/bootstrap.min.css" />
-<link rel="stylesheet" href="/jsp05-model2/css/form.css" />
+<link rel="stylesheet" href="/jsp05-model2/css/layout.css" />
 
 <script src="../js/bootstrap.bundle.min.js"></script>
 <script src="../js/jquery-3.7.1.min.js"></script>
@@ -40,10 +40,25 @@
 		</c:when>
 		<c:otherwise>
 		<ul class="nav nav-pills">
-			<li class="nav-item"><a href="../index/index" class="nav-link active"
-				aria-current="page">MyHome</a></li>
+			<li class="nav-item">
+				<a href="../index/index" class="nav-link active"aria-current="page">공홈</a></li>
 			<li class="nav-item"><a href="../member/logout" class="nav-link">로그아웃</a></li>
-			<li class="nav-item"><a href="../member/info?userID=${loggedID }" class="nav-link">${sessionScope.loggedName }</a></li>
+			<%-- <li class="nav-item"><a href="../member/info?userID=${loggedID }" class="nav-link">${sessionScope.loggedName }</a></li> --%>
+			<li class="nav-item">
+				<a href="../member/info?userID=${loggedID }" class="nav-link">
+					<c:choose>
+						<c:when test="${not empty loggedMember.profile}">
+								<img src="${pageContext.request.contextPath }/upload/${infoMember.profile}" 
+									 class="profile">
+						</c:when>
+						<c:otherwise>
+			
+								<img src="../images/user.png" 
+									 class="profile-small">
+						</c:otherwise>
+					</c:choose>
+				</a>
+			</li>
 			<li class="nav-item"><a href="../board/list" class="nav-link">게시판</a></li>
 		</ul>
 		</c:otherwise>

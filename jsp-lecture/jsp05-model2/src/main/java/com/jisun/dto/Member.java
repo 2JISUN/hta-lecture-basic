@@ -13,7 +13,6 @@ DTO 클래스는 데이터의 전달과 저장을 단순하게 하고, 데이터
 
 package com.jisun.dto;
 
-import jakarta.servlet.http.Part;
 
 public class Member {
 	
@@ -22,18 +21,15 @@ public class Member {
 	   생성방법 : 직접 작성
 	*/
 	
-
-
-
-
-
-
+	private int no;
+	private String id;
 	private String password;
 	private String name;
 	private int postcode;
 	private String address;
 	private String addressdetail;
 	private String regdate;
+	
 	private String email;
 	private String tel;
 	private String profile; //경로로 삽입 (Part는 사진삽입일때만)
@@ -51,8 +47,7 @@ public class Member {
 	 	객체의 데이터를 보호하고 캡슐화를 유지하며, 
 	 	객체 지향 프로그래밍의 원칙을 준수하고 유지보수성을 향상
 	*/
-	
-	private int no; 
+
 	public int getNo() {
 		return no;
 	}
@@ -194,7 +189,7 @@ public class Member {
 	
 
 
-	private String id;
+
 	@Override
 	public String toString() {
 		return "Member [id=" + id + ", password=" + password + ", name=" + name + ", postcode=" + postcode
