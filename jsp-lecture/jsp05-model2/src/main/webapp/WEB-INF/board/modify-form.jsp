@@ -12,16 +12,19 @@
 		<h3>게시판 글쓰기</h3>
 		<br>
 			<!-- 데이터를 보내주는 방식 -->
-			<form action="../board/write-process"
+			<form action="../board/modify-confirm-process"
 				  method="post">
 				  
-				<!-- 세션 설정 -->
+				<!-- 히든설정 -->
 				<input type="hidden"
 					   name="loggedID"
-					   value="${sessionScope.loggedID }">
+					   value="${loggedID }">
 				<input type="hidden"
 					   name="loggedName"
-					   value="${sessionScope.loggedName }">
+					   value="${loggedName }">
+				<input type="hidden" 
+					   name="no" 
+					   value="${modifyBoard.no }">
 			
 				<!-- 제목 -->
 				<div class="mb-3">
@@ -30,7 +33,8 @@
 				  		 class="form-control" 
 				  		 id="title" 
 				  		 name="title" 
-				  		 placeholder="제목을 쓰세요">
+				  		 placeholder="제목을 쓰세요"
+				  		 value="${modifyBoard.title }">
 				</div>
 				
 				<!-- 내용 -->
@@ -40,22 +44,14 @@
 					  		id="contenet" 
 					  		name="content" 
 					  		rows="8">
+					  		${modifyBoard.content }
 				  </textarea>
 				</div>
-				
-				<!-- 비밀번호 -->
-				<div class="mb-3">
-				  <label for="password" class="form-label">비밀번호</label>
-				  <input type="text" 
-				  		 class="form-control" 
-				  		 id="title" 
-				  		 name="password" 
-				  		 placeholder="비밀번호">
-				</div>
+
 				
 				<!-- 버튼 -->
 				<div class="d-flex justify-content-center mt5 mb5">
-					<button class="btn btn-primary">등록</button>
+					<button class="btn btn-primary">수정완료</button>
 					<button class="btn btn-secondary">취소</button>
 				</div>
 			</form>

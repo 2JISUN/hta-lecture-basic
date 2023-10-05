@@ -43,6 +43,7 @@ public class DeleteProcess extends HttpServlet {
 		MemberDao memberDao = new MemberDao();
 				
 		int result = memberDao.deleteMember(userID,userPW);
+		
 	    // 회원 탈퇴 전에 프로필 이미지 파일 이름을 가져옴
 	   
 		Member loggedMember = (Member)session.getAttribute("loggedMember");

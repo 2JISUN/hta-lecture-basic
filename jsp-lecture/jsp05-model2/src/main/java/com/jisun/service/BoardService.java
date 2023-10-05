@@ -17,6 +17,7 @@ public interface BoardService {
 	List<Board> list();
 	int insertBoard(Board board); //ckeditor
 	Board viewBoard(int no);
+	int deleteBoard(int no, String password);
 
 	
 }

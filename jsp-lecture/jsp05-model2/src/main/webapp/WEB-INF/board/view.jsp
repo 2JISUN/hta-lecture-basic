@@ -15,17 +15,17 @@
 				<tbody>
 					<tr>
 						<th>제목</th>
-						<td colspan="3">${board.title }</td>
+						<td colspan="3">${board.title}</td>
 					</tr>
 					<tr>
 						<th>글쓴이</th>
-						<td colspan="3">${board.name }</td>
+						<td colspan="3">${board.name}</td>
 					</tr>
 					<tr>
 						<th>날짜</th>
-						<td>${board.regdate }</td>
+						<td>${board.regdate}</td>
 						<th>조회수</th>
-						<td>${board.hit }</td>
+						<td>${board.hit}</td>
 					</tr>
 					<tr>
 						<th>내용</th>
@@ -34,14 +34,12 @@
 				</tbody>
 			</table>
 			<div class="d-flex justify-content-center mt-5">
-				<a href="../board/list.jsp" class="btn btn-primary">목록</a> <a
-					href="../board/write.jsp" class="btn btn-primary mx-1">글쓰기</a>
-				
-				<a href="../board/delete.jsp?no="
-					class="btn btn-danger mx-1">지우기</a> <a
-					href="../board/modify.jsp?no="
-					class="btn btn-danger mx-1">수정하기</a>
-				
+
+				<a href="../board/list" class="btn btn-primary">목록</a> 
+				<a href="../board/write" class="btn btn-primary mx-1">글쓰기</a>
+				<a href="../board/delete?no=${board.no}" class="btn btn-danger mx-1">지우기</a> 
+				<a href="../board/modify?no=${board.no}" class="btn btn-danger mx-1">수정하기</a>
+
 			</div>
 
 		</div>
