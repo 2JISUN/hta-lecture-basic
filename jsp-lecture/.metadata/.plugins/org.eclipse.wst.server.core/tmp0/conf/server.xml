@@ -141,12 +141,12 @@
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
 	  <!-- 서버 내부경로 -->
-      <Context docBase="C:\Users\user\Desktop\2JISUN\jsp-lecture\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ROOT" path="" reloadable="false"/><Context docBase="C:\Users\user\Desktop\2JISUN\jsp-lecture\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\jsp05-model2" path="/jsp05-model2" reloadable="true" source="org.eclipse.jst.jee.server:jsp05-model2"/>
+      
 		      
 	  <!-- 서버 외부경로 -->	      
-      <Context docBase="C:\\upload" path="/jsp05-model2/upload" reloadable="true"/>
+      <Context docBase="C:\Users\user\Desktop\2JISUN\jsp-lecture\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ROOT" path="" reloadable="false"/><Context docBase="C:\\upload" path="/jsp05-model2/upload" reloadable="true"/>
 		      
-      </Host>
+      <Context docBase="C:\Users\user\Desktop\2JISUN\jsp-lecture\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\jsp06-replyboard" path="/jsp06-replyboard" reloadable="true" source="org.eclipse.jst.jee.server:jsp06-replyboard"/></Host>
     </Engine>
   </Service>
 </Server>

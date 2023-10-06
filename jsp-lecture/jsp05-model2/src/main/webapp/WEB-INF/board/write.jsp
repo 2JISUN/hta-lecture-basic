@@ -65,9 +65,10 @@
 
 
 
-<!-- 외부라이브러리인 ckfinder로 게시판 생성 -->
+<!-- 외부라이브러리 ckfinder로 게시판 생성 -->
 <!-- <script src="../js/ckeditor.js"></script> -->
 <script src="https://cdn.ckeditor.com/ckeditor5/39.0.2/classic/ckeditor.js"></script>
+
 <!-- 이미지 삽입을 위해서는 -->
 <script>
 ClassicEditor
@@ -81,5 +82,23 @@ ClassicEditor
     } );
 </script>
 
+<!-- 미디어 링크 삽입을 위해서는 -->
+<script charset="utf-8" src="//cdn.iframe.ly/embed.js?api_key=241b577da773d7e8d446ee"></script>
+<script>
+    document.querySelectorAll( 'oembed[url]' ).forEach( element => {
+        iframely.load( element, element.attributes.url.value );
+    } );
+</script>
 
 <%@ include file="../include/footer.jsp" %>
+
+
+
+
+
+
+
+
+
+
+

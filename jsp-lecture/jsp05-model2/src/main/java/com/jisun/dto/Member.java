@@ -29,7 +29,6 @@ public class Member {
 	private String address;
 	private String addressdetail;
 	private String regdate;
-	
 	private String email;
 	private String tel;
 	private String profile; //경로로 삽입 (Part는 사진삽입일때만)

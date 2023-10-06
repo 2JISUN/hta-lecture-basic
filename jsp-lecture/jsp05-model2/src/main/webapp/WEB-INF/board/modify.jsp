@@ -9,7 +9,7 @@
 	<!-- 간격 및 크기를 맞추기 위한 div  -->
 	<div class="row d-flex justify-content-center">
 		<div class="col-8">
-		<h3>delete.jsp 글 삭제하기</h3>
+		<h3>수정하기 비밀번호 입력</h3>
 		<br>
 			<!-- 데이터를 보내주는 방식 -->
 			<form action="../board/modify-process"

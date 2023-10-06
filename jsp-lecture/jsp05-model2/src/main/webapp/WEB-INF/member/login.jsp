@@ -19,8 +19,7 @@
 				   class="form-control" 
 				   id="userID" 
 				   value="${cookie.saveIDCookie.value}" 
-				   placeholder="user id"> 
-				   
+				   placeholder="아이디"> 
 			<label for="userID">아이디 입력</label>
 		</div>
 		
@@ -30,7 +29,7 @@
 				   name="userPW" 
 				   class="form-control" 
 				   id="userPW"
-				   placeholder="Password"> 
+				   placeholder="비밀번호"> 
 		   <label for="userPW">비밀번호 입력</label>
 		</div>
 		

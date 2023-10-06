@@ -37,10 +37,14 @@ public class IDCheck extends HttpServlet {
     }
 
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, 
+						 HttpServletResponse response) throws ServletException, 
+															  IOException {
+		
 		String userID = request.getParameter("userID");
 		MemberDao memberDao = new MemberDao();
 		int count = memberDao.idCheck(userID);
+		
 		Gson gson = new Gson();
 		Map<String,Integer> map = new HashMap<>();
 		map.put("count", count);

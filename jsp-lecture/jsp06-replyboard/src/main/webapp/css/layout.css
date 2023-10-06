@@ -1,0 +1,11 @@
+@charset "UTF-8";
+.main {
+	min-height: 500px;
+}
+
+.step2 {
+	padding-left: 20px;
+}
+.step3 {
+	padding-left: 40px;
+}

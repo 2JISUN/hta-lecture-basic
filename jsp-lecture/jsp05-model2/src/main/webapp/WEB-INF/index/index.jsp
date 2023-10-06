@@ -1,16 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<%@ page language="java" 
+		 contentType="text/html; charset=UTF-8"
+		 pageEncoding="UTF-8"%>
+		 
+<%@ include file="../include/header.jsp"%>
 
-<%@ include file="../include/header.jsp" %>
+<div class="form-signin w-100 m-auto">
+  	<h1>index</h1>
+</div>
 
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-</body>
-</html>
-
-<%@ include file="../include/footer.jsp" %>
+<%@ include file="../include/footer.jsp"%>
