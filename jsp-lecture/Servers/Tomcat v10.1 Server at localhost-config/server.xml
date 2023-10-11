@@ -146,7 +146,7 @@
 	  <!-- 서버 외부경로 -->	      
       <Context docBase="C:\\upload" path="/jsp05-model2/upload" reloadable="true"/>
 		      
-      <Context docBase="jsp06-replyboard" path="/jsp06-replyboard" reloadable="true" source="org.eclipse.jst.jee.server:jsp06-replyboard"/></Host>
+      <Context docBase="jsp07-mybatis" path="/jsp07-mybatis" reloadable="true" source="org.eclipse.jst.jee.server:jsp07-mybatis"/></Host>
     </Engine>
   </Service>
 </Server>

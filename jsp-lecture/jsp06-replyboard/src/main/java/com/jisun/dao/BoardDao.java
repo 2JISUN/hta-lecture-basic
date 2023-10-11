@@ -42,7 +42,7 @@ public class BoardDao implements BoardService {
 		ResultSet rs = null;
 		JDBCConnect jdbcConn = new JDBCConnect();
 		try {
-			String sql = "select * from replyboard order by regroup desc, relevel asc ";
+			String sql = "select * from replyboard order by regroup desc, relevel asc";
 			PreparedStatement pstmt = jdbcConn.conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			boardList = new ArrayList<BoardDto>();
@@ -61,6 +61,7 @@ public class BoardDao implements BoardService {
 				boardDto.setAvailable(rs.getInt("available"));
 				boardList.add(boardDto);
 			}
+			System.out.println(boardList.size());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
