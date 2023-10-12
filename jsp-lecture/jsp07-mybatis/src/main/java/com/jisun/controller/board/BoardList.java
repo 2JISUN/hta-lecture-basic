@@ -1,5 +1,6 @@
 package com.jisun.controller.board;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -23,26 +24,27 @@ public class BoardList extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int start = Integer.parseInt(request.getParameter("start"));
-		int end = Integer.parseInt(request.getParameter("end"));
+		//int start = Integer.parseInt(request.getParameter("start"));
+		//int end = Integer.parseInt(request.getParameter("start"));
 		
 		BoardDao boardDao = new BoardDao();
-		HashMap<String,Integer> pageMap = new HashMap<>();
-		pageMap.put("start", start);
-		pageMap.put("end", end);
+		HashMap <String,Integer> pageMap = new HashMap<>();
+		pageMap.put("start", 1);
+		pageMap.put("end", 10);
 		
 		PageDto pageDto = new PageDto();
 		pageDto.setStart(1);
 		pageDto.setEnd(7);
-		
 		List<BoardDto> boardList = boardDao.getAllBoard(pageDto);
-		System.out.println(boardList.size());
-		
-		
+
+		request.setAttribute("boardList", boardList);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/board/list.jsp");
+		dispatcher.forward(request, response);
+	
 	}
 
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 		doGet(request, response);
 	}
 

@@ -22,19 +22,18 @@ public class BoardAllDelete extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		BoardDao boardDao = new BoardDao();
 		//ArrayList<Integer> noList = new ArrayList<>();
-		//noList.add(12);
-		//noList.add(13);
-		//noList.add(14);
-		
-		String tempArray[]= request.getParameterValues("no");
+		//noList.add(15);
+		//noList.add(16);
+		//noList.add(19);
+		String tempArray[] = request.getParameterValues("no");
 		int noList[] = new int[tempArray.length];
-		for(int i = 0; i<tempArray.length; i++) {
+		System.out.println(request.getParameterValues("no"));
+		for(int i=0;i<tempArray.length;i++) {
 			noList[i] = Integer.parseInt(tempArray[i]);
 		}
-		
 		int result = boardDao.deleteAllBoard(noList);
-		if(result>noList.length) {
-			System.err.println("여러개 지워졌음");
+		if(result>=noList.length) {
+			System.err.println("여러개 지워졌습니다.");
 		} else {
 			System.err.println("오류");
 		}

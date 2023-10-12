@@ -6,14 +6,14 @@
 		<item key="isRegEx" value="false"/>
 		<item key="selection" value="Date"/>
 		<list key="findhistory">
+			<item value="login"/>
+			<item value="BoardWriteProcess"/>
 			<item value="boardlist"/>
 			<item value="date"/>
 			<item value="reg"/>
 			<item value="setRegruop"/>
 			<item value="id"/>
 			<item value="resultJson"/>
-			<item value="postCode"/>
-			<item value="list"/>
 		</list>
 		<list key="replacehistory">
 		</list>

@@ -1,0 +1,33 @@
+@charset "UTF-8";
+.form-signin{
+	max-width: 330px;
+}
+.info{
+	max-width: 800px;
+}
+
+.content{
+ 	white-space: pre-line;	
+}
+
+.preview img{
+	max-width: 150px;
+	aspect-ratio: ;
+
+}
+
+/*인포*/
+.profile{
+	width: 200px;
+	height: 200px;
+	object-fit: cover;
+	border-radius: 500px;
+}
+
+/*헤더*/
+.profile-small{
+	width: 40px;
+	height: 40px;
+	object-fit: cover;
+	border-radius: 500px;
+}

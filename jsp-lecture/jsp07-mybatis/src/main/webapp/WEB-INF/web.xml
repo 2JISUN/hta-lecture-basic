@@ -21,13 +21,13 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>BoardWrite</display-name>
-    <servlet-name>BoardWrite</servlet-name>
-    <servlet-class>com.jisun.controller.board.BoardWrite</servlet-class>
+    <display-name>BoardWriteProcess</display-name>
+    <servlet-name>BoardWriteProcess</servlet-name>
+    <servlet-class>com.jisun.controller.board.BoardWriteProcess</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>BoardWrite</servlet-name>
-    <url-pattern>/board/Write</url-pattern>
+    <servlet-name>BoardWriteProcess</servlet-name>
+    <url-pattern>/board/write-process</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
@@ -58,5 +58,55 @@
   <servlet-mapping>
     <servlet-name>BoardAllDelete</servlet-name>
     <url-pattern>/board/all-delete</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>BoardSearch</display-name>
+    <servlet-name>BoardSearch</servlet-name>
+    <servlet-class>com.jisun.controller.board.BoardSearch</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BoardSearch</servlet-name>
+    <url-pattern>/board/search</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>BoardWrite</display-name>
+    <servlet-name>BoardWrite</servlet-name>
+    <servlet-class>com.jisun.controller.board.BoardWrite</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BoardWrite</servlet-name>
+    <url-pattern>/board/write</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>BoardView</display-name>
+    <servlet-name>BoardView</servlet-name>
+    <servlet-class>com.jisun.controller.board.BoardView</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BoardView</servlet-name>
+    <url-pattern>/board/view</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>MemberLogin</display-name>
+    <servlet-name>MemberLogin</servlet-name>
+    <servlet-class>com.jisun.controller.member.MemberLogin</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MemberLogin</servlet-name>
+    <url-pattern>/member/login</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>MemberLoginProcess</display-name>
+    <servlet-name>MemberLoginProcess</servlet-name>
+    <servlet-class>com.jisun.controller.member.MemberLoginProcess</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MemberLoginProcess</servlet-name>
+    <url-pattern>/member/login-process</url-pattern>
   </servlet-mapping>
 </web-app>

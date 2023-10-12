@@ -5,8 +5,9 @@
  <configuration>
  
  <typeAliases>
-	 <typeAlias alias="BoardDto" type="com.jisun.dto.BoardDto"/>
-	 <typeAlias alias="PageDto" type="com.jisun.dto.PageDto"/>
+	 <typeAlias alias="BoardDto" 	type="com.jisun.dto.BoardDto"/>
+	 <typeAlias alias="PageDto" 	type="com.jisun.dto.PageDto"/>
+	 <typeAlias alias="MemberDto" 	type="com.jisun.dto.MemberDto"/>
  </typeAliases>
  
   <environments default="development">
@@ -23,6 +24,7 @@
   
   <mappers>
     <mapper resource="com/jisun/mybatis/board.xml"/>
+    <mapper resource="com/jisun/mybatis/member.xml"/>
   </mappers>
   
 </configuration>

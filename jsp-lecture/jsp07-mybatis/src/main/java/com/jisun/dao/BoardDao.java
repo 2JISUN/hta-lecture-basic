@@ -19,8 +19,6 @@ public class BoardDao {
 		sqlSession.close();
 		return boardList;
 	}
-	
-	
 	public List<BoardDto> getAllBoard(PageDto pageDto) {
 		List<BoardDto> boardList = null;
 		// SqlSession을 하나 열어준다.
@@ -29,8 +27,6 @@ public class BoardDao {
 		sqlSession.close();
 		return boardList;
 	}
-	
-	
 	public BoardDto getOneBoard(int no) {
 		BoardDto boardDto = null;
 		SqlSession sqlSession = MybatisConnectionFactory.getSqlSession();
@@ -38,19 +34,17 @@ public class BoardDao {
 		sqlSession.close();
 		return boardDto;
 	}
-	
 	public int writeBoard(BoardDto boardDto) {
 		int result = 0;
 		SqlSession sqlSession = MybatisConnectionFactory.getSqlSession();
-		result = sqlSession.insert("writeBoard",boardDto);
+		result = sqlSession.insert("writeBoard", boardDto);
 		sqlSession.close();
 		return result;
 	}
-	
 	public int deleteBoard(int no) {
 		int result = 0;
 		SqlSession sqlSession = MybatisConnectionFactory.getSqlSession();
-		result = sqlSession.delete("deleteBoard",no);
+		result = sqlSession.delete("deleteBoard", no);
 		sqlSession.close();
 		return result;
 	}
@@ -58,36 +52,23 @@ public class BoardDao {
 	public int updateHit(int no) {
 		int result = 0;
 		SqlSession sqlSession = MybatisConnectionFactory.getSqlSession();
-		result = sqlSession.update("updateHit",no);
+		result = sqlSession.update("updateHit", no);
 		sqlSession.close();
 		return result;
 	}
-	
 	public int deleteAllBoard(int[] noList) {
 		int result = 0;
 		SqlSession sqlSession = MybatisConnectionFactory.getSqlSession();
-		result = sqlSession.delete("deleteAllBoard",noList);
+		result = sqlSession.delete("deleteAllBoard", noList);
 		sqlSession.close();
 		return result;
 	}
-	
-	
-
-	
+	public List<BoardDto> getSearchBoard(HashMap<String,String> seachMap) {
+		List<BoardDto> boardList = null;
+		// SqlSession을 하나 열어준다.
+		SqlSession sqlSession = MybatisConnectionFactory.getSqlSession();
+		boardList = sqlSession.selectList("searchSelect",seachMap);
+		sqlSession.close();
+		return boardList;
+	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
