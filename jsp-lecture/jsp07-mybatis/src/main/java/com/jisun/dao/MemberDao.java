@@ -24,4 +24,34 @@ public class MemberDao {
         // 로그인된 Member 정보 또는 null을 반환
         return loggedMember;
 	}
+	
+	public int idCheck(String id) {
+		// 초기화
+		int result = 0;
+		// MyBatis의 SqlSession을 가져오는 메서드를 호출하여 SqlSession 객체를 획득
+        SqlSession sqlSession = MybatisConnectionFactory.getSqlSession();
+        // MyBatis 매퍼 파일에 정의된 "result" 쿼리를 실행하고 결과를 받아옴
+        result = sqlSession.selectOne("idCheck", id); //selectOne ? 결과값이 1개일때
+        // 사용이 끝난 SqlSession 객체를 닫음
+        sqlSession.close();
+        // 같은 아이디(String)가 있으면 1 없으면 0
+        return result;
+		
+	}
+
+	public int insertMember(MemberDto memberDto) {
+		// 초기화
+				int result = 0;
+		// MyBatis의 SqlSession을 가져오는 메서드를 호출하여 SqlSession 객체를 획득
+        SqlSession sqlSession = MybatisConnectionFactory.getSqlSession();
+        // MyBatis 매퍼 파일에 정의된 "result" 쿼리를 실행하고 결과를 받아옴
+        result = sqlSession.insert("insertMember", memberDto); //selectOne ? 결과값이 1개일때
+        // 사용이 끝난 SqlSession 객체를 닫음
+        sqlSession.close();
+        // 같은 아이디(String)가 있으면 1 없으면 0
+        return result;
+	}
+	
+	
+	
 }

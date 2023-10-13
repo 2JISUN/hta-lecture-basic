@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../include/header.jsp" %>
 	<div class="container">
-		<h2 class="mb-5 mt-5">WRITE</h2>
+		<h2 class="mb-5 mt-5">게시판 답글 : reply.jsp</h2>
 		<!-- write-process에 매핑되는 controller가 있어야함. -->
 		<form action="../board/reply-process" method="post">
 			<input type="hidden" name="name" value="이지선">

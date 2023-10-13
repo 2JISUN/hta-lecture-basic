@@ -4,7 +4,8 @@
 COMMIT; -- 커밋안하면 업데이트 서버에서 조회불가능
 -- rollback 롤백
 
-
+------------------------------------member------------------------------------
+--역할? 회원정보
 
 -- [테이블] member
 -- create table 생성
@@ -69,7 +70,8 @@ select count(*) AS count from member where id = '2JISUN';
 
 
 
-
+------------------------------------board------------------------------------
+--역할? 게시판
 
 
 -- [테이블] board
@@ -137,6 +139,11 @@ DELETE FROM board WHERE NO=1; -- 테이블 값 삭제
 SELECT * FROM board; -- DELETE data 확인
 
 
+-- delete data 삭제
+-- 시퀀스 삭제
+drop sequence seq_board;
+
+
 -- test 쿼리
 -- 게시판 글 목록 정렬
 SELECT * 
@@ -146,3 +153,95 @@ FROM (SELECT rownum AS num,  -- 가상컬럼인 rownum을 추가해서 정렬시
 			  FROM BOARD 
 			  ORDER BY NO DESC) b01)
 WHERE num>=1 AND num<=10;
+
+
+
+
+------------------------------------replyboard------------------------------------
+--역할? 게시판에 답글 기능 : 그룹, 레벨, 스텝
+
+
+CREATE TABLE replyboard (
+	 NO				number 			PRIMARY KEY, --시퀀스 > sys
+	 userid 		varchar2(100) 	NOT null,
+	 name			varchar2(100) 	NOT null,
+	 title 			varchar2(1000)	NOT null,
+	 content 		long			,
+	 regdate		DATE			DEFAULT sysdate, 	--sysdate
+	 hit			NUMBER			,
+	 regruop		NUMBER			NOT null,
+	 relevel		NUMBER			NOT null,
+	 restep			NUMBER			NOT null,
+	 available		NUMBER(1)		DEFAULT 1
+);
+SELECT * FROM replyboard ; -- create 확인
+
+ALTER TABLE replyboard RENAME COLUMN regruop TO regroup; --컬럼명 변경
+
+-- delete table 삭제
+DROP TABLE replyboard; -- 테이블 삭제
+SELECT * FROM replyboard; -- DELETE 테이블 확인
+
+
+-- create SEQUENCE 생성
+-- 필드 > NO > 시퀀스 만들기
+CREATE SEQUENCE seq_replyboard
+	   INCREMENT BY 1
+	   START WITH 	1
+	   MINVALUE 	1
+	   MAXVALUE 	99999
+	   NOCYCLE	
+	   nocache ;
+
+INSERT INTO replyboard VALUES (seq_replyboard.nextval, 'love','윤하','제목','내용',sysdate,0,0,0,0,0);
+INSERT INTO replyboard VALUES (seq_replyboard.nextval, 'love','윤하','제목','내용',sysdate,0,0,0,0,0);
+INSERT INTO replyboard VALUES (seq_replyboard.nextval, 'love','윤하','제목','내용',sysdate,0,0,0,0,0);
+INSERT INTO replyboard VALUES (seq_replyboard.nextval, 'love','윤하','제목','내용',sysdate,0,0,0,0,0);
+INSERT INTO replyboard VALUES (seq_replyboard.nextval, 'love','윤하','제목','내용',sysdate,0,0,0,0,0);
+COMMIT;
+
+
+------------------------------------쿼리 테스트------------------------------------
+SELECT * 
+FROM (SELECT rownum AS num,  -- 가상컬럼인 rownum을 추가해서 정렬시킨다.
+			 b.*
+		FROM (SELECT *
+			  FROM REPLYBOARD 
+			  ORDER BY regroup DESC) b)
+WHERE num>=1 AND num<=10;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

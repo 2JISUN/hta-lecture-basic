@@ -109,4 +109,34 @@
     <servlet-name>MemberLoginProcess</servlet-name>
     <url-pattern>/member/login-process</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>MemberInsert</display-name>
+    <servlet-name>MemberInsert</servlet-name>
+    <servlet-class>com.jisun.controller.member.MemberInsert</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MemberInsert</servlet-name>
+    <url-pattern>/member/insert</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>IDCheck</display-name>
+    <servlet-name>IDCheck</servlet-name>
+    <servlet-class>com.jisun.controller.member.IDCheck</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>IDCheck</servlet-name>
+    <url-pattern>/member/id-check</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>MemberInsertProcess</display-name>
+    <servlet-name>MemberInsertProcess</servlet-name>
+    <servlet-class>com.jisun.controller.member.MemberInsertProcess</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MemberInsertProcess</servlet-name>
+    <url-pattern>/member/insert-process</url-pattern>
+  </servlet-mapping>
 </web-app>

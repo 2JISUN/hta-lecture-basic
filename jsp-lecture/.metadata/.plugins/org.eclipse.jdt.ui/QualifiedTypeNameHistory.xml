@@ -11,14 +11,8 @@
     <fullyQualifiedTypeName name="java.io.PrintWriter"/>
     <fullyQualifiedTypeName name="com.jisun.util.CookieManager"/>
     <fullyQualifiedTypeName name="com.jisun.dto.Member"/>
-    <fullyQualifiedTypeName name="java.util.Date"/>
-    <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
     <fullyQualifiedTypeName name="com.jisun.service.MemberService"/>
-    <fullyQualifiedTypeName name="java.io.File"/>
     <fullyQualifiedTypeName name="jakarta.servlet.annotation.WebServlet"/>
-    <fullyQualifiedTypeName name="com.google.gson.Gson"/>
-    <fullyQualifiedTypeName name="java.util.Map"/>
-    <fullyQualifiedTypeName name="jakarta.servlet.http.Part"/>
     <fullyQualifiedTypeName name="com.jisun.dto.Board"/>
     <fullyQualifiedTypeName name="com.jisun.service.BoardService"/>
     <fullyQualifiedTypeName name="com.jisun.common.JDBCConnect"/>
@@ -33,7 +27,6 @@
     <fullyQualifiedTypeName name="org.apache.ibatis.session.SqlSession"/>
     <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="com.jisun.mybatis.MybatisConnectionFactory"/>
-    <fullyQualifiedTypeName name="java.util.HashMap"/>
     <fullyQualifiedTypeName name="com.jisun.dto.PageDto"/>
     <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="int"/>
@@ -42,10 +35,17 @@
     <fullyQualifiedTypeName name="com.jisun.dto.BoardDto"/>
     <fullyQualifiedTypeName name="java.net.URLEncoder"/>
     <fullyQualifiedTypeName name="java.nio.charset.StandardCharsets"/>
-    <fullyQualifiedTypeName name="jakarta.servlet.RequestDispatcher"/>
     <fullyQualifiedTypeName name="jakarta.servlet.http.HttpServletResponse"/>
-    <fullyQualifiedTypeName name="com.jisun.dto.MemberDto"/>
-    <fullyQualifiedTypeName name="com.jisun.dao.MemberDao"/>
     <fullyQualifiedTypeName name="jakarta.servlet.http.HttpSession"/>
     <fullyQualifiedTypeName name="com.jisun.dto.ModalState"/>
+    <fullyQualifiedTypeName name="jakarta.servlet.RequestDispatcher"/>
+    <fullyQualifiedTypeName name="com.google.gson.Gson"/>
+    <fullyQualifiedTypeName name="java.util.Map"/>
+    <fullyQualifiedTypeName name="java.util.HashMap"/>
+    <fullyQualifiedTypeName name="jakarta.servlet.http.Part"/>
+    <fullyQualifiedTypeName name="java.util.Date"/>
+    <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
+    <fullyQualifiedTypeName name="java.io.File"/>
+    <fullyQualifiedTypeName name="com.jisun.dto.MemberDto"/>
+    <fullyQualifiedTypeName name="com.jisun.dao.MemberDao"/>
 </qualifiedTypeNameHistroy>

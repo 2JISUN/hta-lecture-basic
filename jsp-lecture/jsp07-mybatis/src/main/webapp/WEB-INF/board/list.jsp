@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../include/header.jsp" %>
 	<div class="container">
-		<h2 class="mb-5 mt-5">list.jsp</h2>
+		<h2 class="mb-5 mt-5">게시판 글 목록 : list.jsp</h2>
 		<table class="table">
 		  <thead>
 		    <tr>

@@ -145,6 +145,7 @@
 		      
 	  <!-- 서버 외부경로 -->	      
       <Context docBase="C:\Users\user\Desktop\2JISUN\jsp-lecture\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ROOT" path="" reloadable="false"/><Context docBase="C:\\upload" path="/jsp05-model2/upload" reloadable="true"/>
+      <Context docBase="C:\\upload02" path="/jsp07-mybatis/upload02" reloadable="true"/>
 		      
       <Context docBase="C:\Users\user\Desktop\2JISUN\jsp-lecture\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\jsp07-mybatis" path="/jsp07-mybatis" reloadable="true" source="org.eclipse.jst.jee.server:jsp07-mybatis"/></Host>
     </Engine>

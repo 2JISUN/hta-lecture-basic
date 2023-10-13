@@ -8,11 +8,16 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>쿄쿄쿄</title>
+
+<script src="../js/jquery-3.7.1.min.js"></script>
 <script src="../js/bootstrap.bundle.min.js"></script>
-<link rel="stylesheet" href="../css/bootstrap.min.css"  />
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
+<link rel="stylesheet" href="../css/bootstrap.min.css">
 <link rel="stylesheet" href="../css/font_bootstrap-icons.css">
 <link rel="stylesheet" href="../css/layout.css">
+
 
 </head>
 <body>
@@ -36,7 +41,7 @@
           </li>
           <!-- 회원가입 -->
           <li>
-         	 <a href="../member/join" class="nav-link px-2 link-body-emphasis">회원가입</a>
+         	 <a href="../member/insert" class="nav-link px-2 link-body-emphasis">회원가입</a>
           </li>
           <!-- 게시판 -->
           <li>
@@ -50,7 +55,7 @@
 
         <div class="dropdown text-end">
           <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+            <img src="${pageContext.request.contextPath}/upload02/${profile}" alt="mdo" width="32" height="32" class="rounded-circle">
           </a>
           <ul class="dropdown-menu text-small">
             <li><a class="dropdown-item" href="#">New project...</a></li>

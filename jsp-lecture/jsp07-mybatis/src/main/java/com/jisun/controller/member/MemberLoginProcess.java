@@ -42,6 +42,7 @@ public class MemberLoginProcess extends HttpServlet {
 			session.setAttribute("modalState", modalState);
 			session.setAttribute("loggedID", loggedMember.getId());
 			session.setAttribute("loggedName", loggedMember.getName());
+			session.setAttribute("profile", loggedMember.getProfile());
 			response.sendRedirect("../board/list");
 		}
 		

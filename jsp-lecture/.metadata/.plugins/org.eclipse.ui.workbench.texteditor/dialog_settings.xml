@@ -6,6 +6,7 @@
 		<item key="isRegEx" value="false"/>
 		<item key="selection" value="Date"/>
 		<list key="findhistory">
+			<item value="uploade"/>
 			<item value="login"/>
 			<item value="BoardWriteProcess"/>
 			<item value="boardlist"/>
@@ -13,7 +14,6 @@
 			<item value="reg"/>
 			<item value="setRegruop"/>
 			<item value="id"/>
-			<item value="resultJson"/>
 		</list>
 		<list key="replacehistory">
 		</list>
