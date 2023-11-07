@@ -269,6 +269,7 @@
 					userID : $("#userID").val(),
 				},
 				//method: "get",
+				
 				success : function(data) {
 					//console.log("success");
 					//console.log(data);
